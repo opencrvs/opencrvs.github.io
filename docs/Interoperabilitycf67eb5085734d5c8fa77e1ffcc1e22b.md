@@ -1,0 +1,49 @@
+---
+id: interoperability
+title: Interoperability
+sidebar_label: Interoperability
+---
+
+For a digital civil registration system's true value to be realised, it needs to work easily with other systems in the e-government ecosystem. OpenCRVS uses a standards-based approach to safely and effectively integrate with other systems.
+
+# National ID
+
+OpenCRVS can integrate with any National ID system in order to reliably validate the existence of NID numbers provided during civil registration applications as well as reduce the time spent on the application form itself by pulling data from the NID system and auto-populating form fields.
+
+## Use Cases
+
+OpenCRVS can be integrated with your National ID system in a number of ways, depending on your system's capability. Current capabilities include:
+
+1. To validate the existence of a NID number
+2. To auto-populate the form with data from the NID field to minimise required effort from registration staff
+
+## Technical Documentation
+
+For more information how this works, check out
+
+# Health
+
+Births and deaths often occur in health facilities and those that occur in the community can be dealt with by health staff at the community level. These actors already use digital health systems to conduct their work and much of the data required for birth/death notifications is already gathered.
+
+We know that health staff are busy and need to focus on life-saving activities rather than administrative ones. To address the opportunity that this data has for civil registration, OpenCRVS can integrate with existing health systems via a FHIR mediator (leveraging existing health standards) and can receive data from health systems for follow up within the OpenCRVS system.
+
+For more details of how this works functionally in OpenCRVS, check out the [Notification _from health_](https://www.notion.so/Notification-from-health-d0dd09f919914ef6bb221324be9bd190) function.
+
+## Use Cases
+
+OpenCRVS can integrate with an existing health system via its OpenHIE compliant & FHIR standardised, interoperability layer, OpenHIM.
+
+Current capabilities include:
+
+1. To receive birth/death notification information from a health system e.g. DHIS2
+2. To allow Registration Agents and Registrars to view this data as an "in-progress" application and complete it in OpenCRVS
+3. To see disaggregated data related to the notifications received from health systems
+
+## Technical Documentation
+
+[TO ADD]
+
+# Here's what's coming
+
+- **Refugee management systems** e.g.
+- **Social protection systems** e.g. inform case management systems when vulnerable children

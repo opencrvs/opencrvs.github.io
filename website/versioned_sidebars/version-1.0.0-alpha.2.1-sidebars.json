@@ -1,19 +1,13 @@
 {
   "version-1.0.0-alpha.2.1-docs": {
-    "Docusaurus": [
-      "version-1.0.0-alpha.2.1-doc1"
-    ],
-    "First Category": [
-      "version-1.0.0-alpha.2.1-doc2"
-    ],
-    "Second Category": [
-      "version-1.0.0-alpha.2.1-doc3"
-    ]
-  },
-  "version-1.0.0-alpha.2.1-docs-other": {
-    "First Category": [
-      "version-1.0.0-alpha.2.1-doc4",
-      "version-1.0.0-alpha.2.1-doc5"
+    "System overview": [
+      "version-1.0.0-alpha.2.1-introduction",
+      "version-1.0.0-alpha.2.1-functionalArchitecture",
+      "version-1.0.0-alpha.2.1-keyFeatures",
+      "version-1.0.0-alpha.2.1-interoperability",
+      "version-1.0.0-alpha.2.1-configuration",
+      "version-1.0.0-alpha.2.1-siteMap",
+      "version-1.0.0-alpha.2.1-roadMap"
     ]
   }
 }

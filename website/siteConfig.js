@@ -38,8 +38,7 @@ const siteConfig = {
 
   // For no header links in the top nav bar -> headerLinks: [],
   headerLinks: [
-    { doc: "doc1", label: "Docs" },
-    { doc: "doc4", label: "API" },
+    { doc: "introduction", label: "Docs" },
     { page: "help", label: "Help" },
     { blog: true, label: "Blog" },
   ],
@@ -84,7 +83,7 @@ const siteConfig = {
   scripts: ["https://buttons.github.io/buttons.js"],
 
   // On page navigation for the current documentation page.
-  onPageNav: "separate",
+  // onPageNav: "separate",
   // No .html extensions for paths.
   cleanUrl: true,
 
