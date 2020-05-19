@@ -21,8 +21,9 @@ const users = [
 ];
 
 const siteConfig = {
-  title: "OpenCRVS", // Title for your website.
-  tagline: "A GLOBAL SOLUTION FOR CIVIL REGISTRATION",
+  title:
+    "OpenCRVS is a digital public good to achieve universal civil registration and evidence-based decision making in low resource settings", // Title for your website.
+  tagline: "",
   url: "https://opencrvs.github.io/", // Your website URL
   baseUrl: "/opencrvs-core/", // Base URL for your project */
   // For github.io type URLs, you would set the url and baseUrl like:
@@ -39,15 +40,14 @@ const siteConfig = {
   // For no header links in the top nav bar -> headerLinks: [],
   headerLinks: [
     { doc: "introduction", label: "Docs" },
-    { page: "help", label: "Help" },
-    { blog: true, label: "Blog" },
+    { href: "https://github.com/opencrvs/opencrvs-core", label: "Code" },
   ],
 
   // If you have users set above, you add it here:
   users,
 
   /* path to images for header/footer */
-  headerIcon: "img/favicon.ico",
+  headerIcon: "img/logo.svg",
   footerIcon: "img/favicon.ico",
   favicon: "img/favicon.ico",
 

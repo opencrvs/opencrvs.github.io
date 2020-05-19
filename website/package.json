@@ -7,9 +7,14 @@
     "write-translations": "docusaurus-write-translations",
     "version": "docusaurus-version",
     "delete:all:versions": "bash clear-version.sh",
-    "rename-version": "docusaurus-rename-version"
+    "rename-version": "docusaurus-rename-version",
+    "postinstall": "patch-package"
   },
   "devDependencies": {
     "docusaurus": "^1.14.4"
+  },
+  "dependencies": {
+    "patch-package": "^6.2.2",
+    "postinstall-postinstall": "^2.1.0"
   }
 }

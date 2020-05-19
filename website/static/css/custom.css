@@ -4,20 +4,332 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  */
- 
+
 /* your custom css */
 
-@media only screen and (min-device-width: 360px) and (max-device-width: 736px) {
-}
-
 @media only screen and (min-width: 1024px) {
+  .navigationSlider .slidingNav ul li a {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 150%;
+    color: #ffffff;
+  }
+
+  .navigationSlider .slidingNav ul li a:hover {
+    color: rgba(255, 255, 255, 0.8) !important;
+  }
 }
 
-@media only screen and (max-width: 1023px) {
+@font-face {
+  font-family: "noto_sans_semi_bold";
+  src: url("/opencrvs-core/fonts/notosans-semibold-webfont-en.ttf")
+    format("truetype");
 }
+
+@font-face {
+  font-family: "noto_sans_regular";
+  src: url("/opencrvs-core/fonts/notosans-regular-webfont-en.ttf")
+    format("truetype");
+}
+
+body {
+  color: #35495d;
+}
+
+.fixedHeaderContainer {
+  background: #42506b;
+}
+
+.headerWrapper .logo {
+  height: 20px;
+  position: relative;
+  left: -18px;
+}
+
+.headerTitleWithLogo {
+  display: none !important;
+}
+
+h3 {
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 150%;
+}
+
+h2 {
+  font-family: "noto_sans_semi_bold";
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 150%;
+}
+
+.homeContainer {
+  text-align: left;
+  margin-top: -56px;
+  background: linear-gradient(180deg, #42506b 0%, #485f88 100%);
+}
+
+.homeContainer .homeWrapper {
+  padding: 0;
+  height: 656px;
+}
+
+.homeContainer .homeWrapper .inner {
+  margin: 0px auto;
+  max-width: 1140px;
+}
+.projectTitle {
+  font-family: "noto_sans_semi_bold";
+  max-width: 851px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 42px;
+  line-height: 150%;
+  color: #ffffff;
+  margin: 0;
+  padding-top: 131px;
+}
+
+.homeContainer .homeWrapper .inner .promoSection .button {
+  border: 2px solid #ffffff;
+  border-radius: 4px;
+  color: #ffffff;
+  display: inline-block;
+  font-family: "noto_sans_semi_bold";
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 27px;
+  padding: 14px 16px;
+  text-decoration: none !important;
+  text-transform: none !important;
+  transition: background 0.3s, color 0.3s;
+  transition: border 0.3s, color 0.3s;
+}
+
+.homeContainer .homeWrapper .inner .promoSection .button:hover {
+  background: $secondaryColor;
+  border: 2px solid $secondaryColor;
+  color: #fff;
+}
+
+.promoSection .promoRow .pluginRowBlock {
+  justify-content: left;
+}
+
+.openCrvsApp {
+  max-width: 1140px;
+  height: 500px;
+}
+
+.openCrvsApp img {
+  position: relative;
+  top: -320px;
+  width: 100%;
+  height: auto;
+  border-bottom: 1px solid #dadedf;
+}
+
+.productShowcaseSection.paddingBottom {
+  max-width: 1140px;
+  margin: 0 auto;
+  border-bottom: 1px solid #dadedf;
+}
+
+.productShowcaseSection h2 {
+  color: #35495d;
+  max-width: 850px;
+  margin: 0 auto;
+  text-align: center;
+  line-height: 150%;
+}
+
+/* Navigation Slider */
+
+.navigationSlider {
+  height: 34px;
+  margin-left: auto;
+  position: relative;
+}
+
+.navigationSlider .navSlideout {
+  display: none;
+}
+
+.navigationSlider nav.slidingNav {
+  background: none;
+  height: auto;
+  position: relative;
+  right: auto;
+  top: auto;
+  width: auto;
+}
+
+.navigationSlider .slidingNav.slidingNavActive {
+  height: auto;
+  padding-top: 42px;
+  width: 300px;
+}
+
+.navigationSlider .slidingNav ul {
+  background: $secondaryColor;
+  box-sizing: border-box;
+  color: #fff;
+  display: flex;
+  flex-wrap: nowrap;
+  list-style: none;
+  margin-top: 50px;
+  padding: 0;
+  width: 100%;
+}
+
+.navigationSlider .slidingNav.slidingNavActive ul {
+  display: block;
+}
+
+.navigationSlider .slidingNav ul {
+  background: none;
+  display: flex;
+  flex-flow: row nowrap;
+  margin: 0;
+  padding: 0;
+  width: auto;
+}
+
+.navigationSlider .slidingNav ul li a {
+  border: 0;
+  color: rgba(255, 255, 255, 0.8);
+  display: flex;
+  font-size: 16px;
+  font-size: 1em;
+  font-weight: 300;
+  height: 32px;
+  line-height: 1.2em;
+  margin: 0;
+  padding: 0;
+  padding: 6px 10px;
+}
+
+.navigationSlider .slidingNav ul li a:hover,
+.navigationSlider .slidingNav ul li.siteNavItemActive a,
+.navigationSlider .slidingNav ul li.siteNavGroupActive a {
+  color: #fff;
+}
+/* End of Navigation Slider */
+
+/* Mobile Screens */
+
+@media only screen and (max-width: 360px) {
+  .projectTitle {
+    font-size: 32px;
+    padding-top: 51px;
+  }
+  .homeContainer .homeWrapper .inner {
+    width: 90%;
+    margin-left: 5%;
+  }
+  .openCrvsApp img {
+    position: relative;
+    top: 0px;
+    width: 100%;
+    height: auto;
+    top: -100px;
+  }
+  .fixedHeaderContainer header h3 {
+    display: none !important;
+  }
+  .headerWrapper .logo {
+    height: 20px;
+    position: relative;
+    left: 0px;
+  }
+  .openCrvsApp {
+    height: 175px;
+  }
+  .productShowcaseSection.paddingBottom {
+    width: 90%;
+    margin-left: 5%;
+    border-bottom: 1px solid #dadedf;
+  }
+}
+/* Tablet Portrait Screens */
+
+@media only screen and (min-width: 361px) and (max-width: 600px) {
+  .projectTitle {
+    font-size: 32px;
+    padding-top: 91px;
+  }
+  .homeContainer .homeWrapper .inner {
+    width: 90%;
+    margin-left: 5%;
+  }
+  .openCrvsApp img {
+    position: relative;
+    top: 0px;
+    width: 100%;
+    height: auto;
+    top: -150px;
+  }
+  .fixedHeaderContainer header h3 {
+    display: none !important;
+  }
+  .headerWrapper .logo {
+    height: 20px;
+    position: relative;
+    left: 0px;
+  }
+  .openCrvsApp {
+    height: 375px;
+  }
+  .productShowcaseSection.paddingBottom {
+    width: 90%;
+    margin-left: 5%;
+    border-bottom: 1px solid #dadedf;
+  }
+}
+
+/* Tablet Landscape Screens */
+
+@media only screen and (min-width: 601px) and (max-width: 1023px) {
+  .projectTitle {
+    font-size: 42px;
+    padding-top: 91px;
+  }
+  .homeContainer .homeWrapper .inner {
+    width: 90%;
+    margin-left: 5%;
+  }
+  .openCrvsApp img {
+    position: relative;
+    top: 0px;
+    width: 100%;
+    height: auto;
+    top: -200px;
+  }
+  .fixedHeaderContainer header h3 {
+    display: none !important;
+  }
+  .headerWrapper .logo {
+    height: 20px;
+    position: relative;
+    left: 0px;
+  }
+  .productShowcaseSection.paddingBottom {
+    width: 90%;
+    margin-left: 5%;
+    border-bottom: 1px solid #dadedf;
+  }
+}
+
+/* Large Screens */
 
 @media only screen and (min-width: 1400px) {
+  .wrapper {
+    max-width: 1140px;
+  }
 }
-
 @media only screen and (min-width: 1500px) {
+  .wrapper {
+    max-width: 1140px;
+  }
 }
