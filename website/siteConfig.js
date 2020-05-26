@@ -80,7 +80,7 @@ const siteConfig = {
   },
 
   // Add custom scripts here that would be placed in <script> tags.
-  scripts: ["http://localhost:3000/opencrvs-core/js/gitter.js"],
+  scripts: ["https://opencrvs.github.io/opencrvs-core/js/gitter.js"],
 
   // On page navigation for the current documentation page.
   // onPageNav: "separate",

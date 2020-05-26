@@ -70,7 +70,7 @@ class Footer extends React.Component {
               GitHub
             </a>
             <a
-              class="github-button"
+              className="github-button"
               href="https://github.com/opencrvs/opencrvs-core/subscription"
               data-icon="octicon-eye"
               aria-label="Watch opencrvs/opencrvs-core on GitHub"
