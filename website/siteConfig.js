@@ -48,7 +48,7 @@ const siteConfig = {
 
   /* path to images for header/footer */
   headerIcon: "img/logo.svg",
-  footerIcon: "img/favicon.ico",
+  footerIcon: "img/logo.svg",
   favicon: "img/favicon.ico",
 
   /* Colors for website */
@@ -80,7 +80,7 @@ const siteConfig = {
   },
 
   // Add custom scripts here that would be placed in <script> tags.
-  scripts: ["https://buttons.github.io/buttons.js"],
+  scripts: ["http://localhost:3000/opencrvs-core/js/gitter.js"],
 
   // On page navigation for the current documentation page.
   // onPageNav: "separate",
@@ -103,7 +103,7 @@ const siteConfig = {
 
   // You may provide arbitrary config keys to be used as needed by your
   // template. For example, if you need your repo's URL...
-  //   repoUrl: 'https://github.com/facebook/test-site',
+  repoUrl: "https://github.com/opencrvs/opencrvs-core",
 };
 
 module.exports = siteConfig;

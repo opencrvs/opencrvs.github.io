@@ -5,20 +5,20 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-const React = require('react');
+const React = require("react");
 
 class Footer extends React.Component {
   docUrl(doc, language) {
     const baseUrl = this.props.config.baseUrl;
     const docsUrl = this.props.config.docsUrl;
-    const docsPart = `${docsUrl ? `${docsUrl}/` : ''}`;
-    const langPart = `${language ? `${language}/` : ''}`;
+    const docsPart = `${docsUrl ? `${docsUrl}/` : ""}`;
+    const langPart = `${language ? `${language}/` : ""}`;
     return `${baseUrl}${docsPart}${langPart}${doc}`;
   }
 
   pageUrl(doc, language) {
     const baseUrl = this.props.config.baseUrl;
-    return baseUrl + (language ? `${language}/` : '') + doc;
+    return baseUrl + (language ? `${language}/` : "") + doc;
   }
 
   render() {
@@ -30,61 +30,72 @@ class Footer extends React.Component {
               <img
                 src={this.props.config.baseUrl + this.props.config.footerIcon}
                 alt={this.props.config.title}
-                width="66"
-                height="58"
+                width="125"
+                height="28.47"
               />
             )}
           </a>
           <div>
             <h5>Docs</h5>
-            <a href={this.docUrl('doc1.html', this.props.language)}>
-              Getting Started (or other categories)
+            <a href={this.docUrl("#", this.props.language)}>Product overview</a>
+            <a href={this.docUrl("#", this.props.language)}>User types</a>
+            <a href={this.docUrl("#", this.props.language)}>Core functions</a>
+            <a href={this.docUrl("#", this.props.language)}>
+              Support functions
             </a>
-            <a href={this.docUrl('doc2.html', this.props.language)}>
-              Guides (or other categories)
-            </a>
-            <a href={this.docUrl('doc3.html', this.props.language)}>
-              API Reference (or other categories)
+            <a href={this.docUrl("#", this.props.language)}>
+              System admin functions
             </a>
           </div>
           <div>
             <h5>Community</h5>
-            <a href={this.pageUrl('users.html', this.props.language)}>
-              User Showcase
-            </a>
-            <a
-              href="https://stackoverflow.com/questions/tagged/"
-              target="_blank"
-              rel="noreferrer noopener">
-              Stack Overflow
-            </a>
-            <a href="https://discordapp.com/">Project Chat</a>
-            <a
-              href="https://twitter.com/"
-              target="_blank"
-              rel="noreferrer noopener">
-              Twitter
+            <a href={this.docUrl("#", this.props.language)}>Help</a>
+
+            <a href="https://www.opencrvs.org/case-studies" target="_blank">
+              Case studies
             </a>
           </div>
           <div>
-            <h5>More</h5>
-            <a href={`${this.props.config.baseUrl}blog`}>Blog</a>
-            <a href="https://github.com/">GitHub</a>
+            <h5>Legal</h5>
+            <a href="#" target="_blank">
+              Privacy
+            </a>
+          </div>
+          <div>
+            <h5>Social</h5>
+            <a className="gitter" href="#">
+              Gitter
+            </a>
+            <a href="https://github.com/opencrvs/opencrvs-core" target="_blank">
+              GitHub
+            </a>
+            <a
+              class="github-button"
+              href="https://github.com/opencrvs/opencrvs-core/subscription"
+              data-icon="octicon-eye"
+              aria-label="Watch opencrvs/opencrvs-core on GitHub"
+            >
+              Watch
+            </a>
+            <br />
             <a
               className="github-button"
               href={this.props.config.repoUrl}
               data-icon="octicon-star"
-              data-count-href="/facebook/docusaurus/stargazers"
+              data-count-href="/opencrvs/opencrvs-core/stargazers"
               data-show-count="true"
               data-count-aria-label="# stargazers on GitHub"
-              aria-label="Star this project on GitHub">
+              aria-label="Star this project on GitHub"
+            >
               Star
             </a>
             {this.props.config.twitterUsername && (
               <div className="social">
                 <a
                   href={`https://twitter.com/${this.props.config.twitterUsername}`}
-                  className="twitter-follow-button">
+                  target="_blank"
+                  className="twitter-follow-button"
+                >
                   Follow @{this.props.config.twitterUsername}
                 </a>
               </div>
@@ -105,19 +116,13 @@ class Footer extends React.Component {
           </div>
         </section>
 
-        <a
-          href="https://opensource.facebook.com/"
-          target="_blank"
-          rel="noreferrer noopener"
-          className="fbOpenSource">
-          <img
-            src={`${this.props.config.baseUrl}img/oss_logo.png`}
-            alt="Facebook Open Source"
-            width="170"
-            height="45"
-          />
-        </a>
         <section className="copyright">{this.props.config.copyright}</section>
+        <script
+          async
+          defer
+          src="https://sidecar.gitter.im/dist/sidecar.v1.js"
+        ></script>
+        <script async defer src="https://buttons.github.io/buttons.js"></script>
       </footer>
     );
   }

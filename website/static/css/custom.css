@@ -39,6 +39,10 @@ body {
   font-weight: normal;
 }
 
+.wrapper {
+  padding: 0px;
+}
+
 .fixedHeaderContainer {
   background: #42506b;
 }
@@ -137,14 +141,13 @@ h3 {
 
 .openCrvsApp {
   max-width: 1140px;
-  height: 500px;
+  margin-bottom: -249px;
 }
 
 .openCrvsApp img {
   position: relative;
   top: -320px;
   width: 100%;
-  height: auto;
   border-bottom: 1px solid #dadedf;
 }
 
@@ -154,10 +157,16 @@ h3 {
   border-bottom: 1px solid #dadedf;
 }
 
+.productShowcaseSection.noBorder {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding-bottom: 50px;
+}
+
 .visionHeader {
   color: #35495d !important;
   max-width: 850px;
-  margin: 0 auto;
+  margin: -10px auto 0 auto !important;
   text-align: center;
   line-height: 150% !important;
 }
@@ -191,6 +200,12 @@ h3 {
   top: 45px;
 }
 
+.lowResourceImage {
+  position: relative;
+  top: 45px;
+  height: 200px;
+}
+
 .processContent p {
   margin-top: 5px;
 }
@@ -216,6 +231,97 @@ h3 {
 
 .homeLinkNoBullets {
   padding-top: 24px;
+}
+
+.lowResourceWrapper h2 {
+  margin-bottom: -30px;
+}
+
+.funcArchImage {
+  padding-top: 10px;
+  margin-bottom: -40px;
+}
+
+.gridBlock .fiveByGridBlock img {
+  max-width: 100%;
+}
+
+.logoImage {
+  max-width: 100px;
+}
+
+.logoGrid {
+  margin: 80px auto 0px auto !important;
+  display: grid;
+  grid-gap: 1rem;
+}
+
+.planLogo {
+  max-width: 178.6px !important;
+  margin: 0 auto;
+}
+
+.jembiLogo {
+  max-width: 139.86px !important;
+  margin: 0 25px 0 25px;
+}
+
+.vitalLogo {
+  max-width: 206.56px !important;
+  margin: 0 25px 0 25px;
+}
+
+.ozLogo {
+  max-width: 133.41px !important;
+  margin: 0 auto;
+}
+
+.dsLogo {
+  max-width: 77.46px !important;
+  margin: 0 auto;
+}
+
+.dialLogo {
+  max-width: 90.19px !important;
+  margin: 0 auto;
+}
+
+.logoElement {
+  text-align: center;
+  height: 100px;
+}
+
+.logoContent {
+  margin: 0 !important;
+  top: 50% !important;
+  -ms-transform: translateY(-50%) !important;
+  transform: translateY(-50%) !important;
+}
+
+.nav-footer .sitemap {
+  max-width: 1140px;
+}
+
+.nav-footer {
+  background: #35495d;
+}
+
+.nav-footer .sitemap .nav-home {
+  width: 125px;
+  opacity: 1;
+  margin: 16px 55px 0 0;
+}
+
+.nav-footer .sitemap div {
+  margin-top: 25px;
+}
+
+.fixedHeaderContainer {
+  z-index: 888 !important;
+}
+
+.gitter-chat-embed {
+  z-index: 999;
 }
 
 /* Navigation Slider */
@@ -306,7 +412,6 @@ h3 {
     position: relative;
     top: 0px;
     width: 100%;
-    height: auto;
     top: -100px;
   }
   .fixedHeaderContainer header h3 {
@@ -316,9 +421,11 @@ h3 {
     height: 20px;
     position: relative;
     left: 0px;
+    padding: 0 20px;
   }
   .openCrvsApp {
-    height: 175px;
+    height: auto;
+    margin-bottom: 0px;
   }
   .productShowcaseSection.paddingBottom {
     width: 90%;
@@ -346,8 +453,12 @@ h3 {
     position: relative;
     top: 0px;
     width: 100%;
+    top: -200px;
+  }
+
+  .openCrvsApp {
     height: auto;
-    top: -150px;
+    margin-bottom: -134px;
   }
   .fixedHeaderContainer header h3 {
     display: none !important;
@@ -356,9 +467,7 @@ h3 {
     height: 20px;
     position: relative;
     left: 0px;
-  }
-  .openCrvsApp {
-    height: 375px;
+    padding: 0 20px;
   }
   .productShowcaseSection.paddingBottom {
     width: 90%;
@@ -378,6 +487,9 @@ h3 {
     font-size: 42px;
     padding-top: 91px;
   }
+  .logoGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
   .homeContainer .homeWrapper .inner {
     width: 90%;
     margin-left: 5%;
@@ -386,9 +498,14 @@ h3 {
     position: relative;
     top: 0px;
     width: 100%;
-    height: auto;
     top: -200px;
   }
+
+  .openCrvsApp {
+    height: auto;
+    margin-bottom: -134px;
+  }
+
   .fixedHeaderContainer header h3 {
     display: none !important;
   }
@@ -396,6 +513,7 @@ h3 {
     height: 20px;
     position: relative;
     left: 0px;
+    padding: 0 20px;
   }
   .productShowcaseSection.paddingBottom {
     width: 90%;
@@ -414,14 +532,23 @@ h3 {
   .wrapper {
     max-width: 1140px;
   }
+  .logoGrid {
+    grid-template-columns: repeat(6, 1fr);
+  }
 }
 @media only screen and (min-width: 1500px) {
   .wrapper {
     max-width: 1140px;
   }
+  .logoGrid {
+    grid-template-columns: repeat(6, 1fr);
+  }
 }
 
-@media only screen and (min-width: 736px) {
+@media only screen and (min-width: 1024px) {
+  .logoGrid {
+    grid-template-columns: repeat(6, 1fr);
+  }
   .gridBlock {
     display: flex;
     flex-direction: row;
@@ -452,6 +579,11 @@ h3 {
     flex: 1 0 20%;
   }
 
+  .gridBlock .fiveByGridBlock {
+    flex: 1 0 16%;
+    margin: 0;
+  }
+
   h2 + .gridBlock {
     padding-top: 20px;
   }
@@ -466,7 +598,7 @@ h3 {
 }
 
 .wrapperTitle {
-  padding-top: 20px;
+  padding-top: 30px;
 }
 
 .bullets {

@@ -23,6 +23,7 @@ class HomeSplash extends React.Component {
 
     const SplashContainer = (props) => (
       <div className="homeContainer">
+        <div className="chatContainer" data-gitter-toggle-chat-state="toggle" />
         <div className="homeSplashFade">
           <div className="wrapper homeWrapper">{props.children}</div>
         </div>
@@ -521,6 +522,221 @@ class Index extends React.Component {
       </div>
     );
 
+    const LowResource = () => (
+      <div className="productShowcaseSection container paddingBottom">
+        <div className="wrapper wrapperTitle lowResourceWrapper">
+          <h2>Developed to work in low resource settings</h2>
+          <div className="gridBlock ">
+            <div className="blockElement threeByGridBlock">
+              <div className="blockContent">
+                <div className="lowResourceImage">
+                  <img src="img/low-resources1.png" alt="Outbox" />
+                </div>
+                <h3>Offline &amp; low connectivity working</h3>
+                <p>
+                  Complete applications offline and send when you reconnect.{" "}
+                </p>
+                <a className="homeLink homeLinkNoBullets" href="#">
+                  Learn more
+                </a>
+              </div>
+            </div>
+
+            <div className="blockElement threeByGridBlock">
+              <div className="blockContent">
+                <div className="lowResourceImage">
+                  <img src="img/low-resources2.png" alt="De-duplication" />
+                </div>
+                <h3>Real-time depuplication</h3>
+                <p>
+                  Increase data quality by identifying potential duplicate
+                  applications with the OpenCRVS deduplication engine.{" "}
+                </p>
+                <a className="homeLink homeLinkNoBullets" href="#">
+                  Learn more
+                </a>
+              </div>
+            </div>
+
+            <div className="blockElement threeByGridBlock">
+              <div className="blockContent">
+                <div className="lowResourceImage">
+                  <img src="img/low-resources3.png" alt="Outbox" />
+                </div>
+                <h3>Multi-language</h3>
+                <p>
+                  Users can easily change the language which they use to make
+                  the experience as local as possible.{" "}
+                </p>
+                <a className="homeLink homeLinkNoBullets" href="#">
+                  Learn more
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+
+    const FuncArch = () => (
+      <div className="productShowcaseSection container paddingBottom processSection">
+        <div className="wrapper wrapperTitle">
+          <h2>Functional Architecture</h2>
+          <p>
+            The OpenCRVS system supports common CRVS workflows and functions as
+            well as a number of functions that will help you realise the true
+            value of civil registration.
+          </p>
+
+          <div>
+            <img
+              className="funcArchImage"
+              src="img/oCRVS_systemArchitecture.png"
+              alt="OpenCRVS Functional Architecture"
+            />
+          </div>
+        </div>
+      </div>
+    );
+
+    const Community = () => (
+      <div className="productShowcaseSection container noBorder processSection">
+        <div className="wrapper wrapperTitle">
+          <h2>Join our community</h2>
+          <p>
+            As we design and develop OpenCRVS, we make a commitment to the
+            following values.{" "}
+          </p>
+          <div className="gridBlock">
+            <div className="blockElement threeByGridBlock">
+              <div className="blockContent">
+                <h4>We are open</h4>
+                <p>
+                  We are a community. We share what we’re doing - code, designs,
+                  tools and ideas, and work well with others.{" "}
+                </p>
+              </div>
+            </div>
+
+            <div className="blockElement threeByGridBlock">
+              <div className="blockContent">
+                <h4>We are rights-based</h4>
+                <p>
+                  We take every action possible to ensure that no-one is left
+                  behind. We are inclusive, don't discriminate and protect as a
+                  priority.{" "}
+                </p>
+              </div>
+            </div>
+
+            <div className="blockElement threeByGridBlock">
+              <div className="blockContent">
+                <h4>We are human-centered</h4>
+                <p>
+                  We put people first. We design with our users to ensure that
+                  the system works for them.{" "}
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="gridBlock">
+            <div className="blockElement threeByGridBlock">
+              <div className="blockContent">
+                <h4>We are future focused</h4>
+                <p>
+                  We build for the future. We use proven technologies that can
+                  adapt to inevitable change.{" "}
+                </p>
+              </div>
+            </div>
+
+            <div className="blockElement threeByGridBlock">
+              <div className="blockContent">
+                <h4>We challenge the status quo</h4>
+                <p>
+                  We challenge business as usual. Civil registration systems are
+                  broken so we need to think differently and innovate.{" "}
+                </p>
+              </div>
+            </div>
+
+            <div className="blockElement threeByGridBlock">
+              <div className="blockContent">
+                <h4>We are trusted</h4>
+                <p>We respect privacy as a fundamental human right. </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+
+    const Logos = () => (
+      <div className="productShowcaseSection container noBorder processSection">
+        <div className="wrapper wrapperTitle logoGrid">
+          <div className="blockElement logoElement">
+            <div className="blockContent logoContent">
+              <img
+                className="logoImage planLogo"
+                src="img/logo1.png"
+                alt="Plan logo"
+              />
+            </div>
+          </div>
+
+          <div className="blockElement logoElement">
+            <div className="blockContent logoContent">
+              <img
+                className="logoImage jembiLogo"
+                src="img/logo2.png"
+                alt="Jembi logo"
+              />
+            </div>
+          </div>
+
+          <div className="blockElement logoElement">
+            <div className="blockContent logoContent">
+              <img
+                className="logoImage vitalLogo"
+                src="img/logo3.png"
+                alt="Vital Strategies logo"
+              />
+            </div>
+          </div>
+          <div className="blockElement logoElement">
+            <div className="blockContent logoContent">
+              <img
+                className="logoImage ozLogo"
+                src="img/logo4.png"
+                alt="Australian Aid logo"
+              />
+            </div>
+          </div>
+
+          <div className="blockElement logoElement">
+            <div className="blockContent logoContent">
+              <img
+                className="logoImage dsLogo"
+                src="img/logo5.png"
+                alt="Digital Square logo"
+              />
+            </div>
+          </div>
+
+          <div className="blockElement logoElement">
+            <div className="blockContent logoContent">
+              <img
+                className="logoImage dialLogo"
+                src="img/logo6.png"
+                alt="DIAL logo"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+
     const Showcase = () => {
       if ((siteConfig.users || []).length === 0) {
         return null;
@@ -558,9 +774,10 @@ class Index extends React.Component {
           <OpenCRVSVision />
           <Features />
           <Process />
-          <TryOut />
-          <Description />
-          <Showcase />
+          <LowResource />
+          <FuncArch />
+          <Community />
+          <Logos />
         </div>
       </div>
     );
