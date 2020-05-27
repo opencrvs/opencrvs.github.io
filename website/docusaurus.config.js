@@ -2,7 +2,7 @@ const siteConfig = {
   title: "OpenCRVS Documentation", // Title for your website.
   tagline: "",
   url: "https://opencrvs.github.io/", // Your website URL
-  baseUrl: "/", // Base URL for your project */
+  baseUrl: "/opencrvs-core/", // Base URL for your project */
   // For github.io type URLs, you would set the url and baseUrl like:
   //   url: 'https://facebook.github.io',
   //   baseUrl: '/test-site/',
