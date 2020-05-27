@@ -2542,13 +2542,13 @@ input::placeholder {
 
 @font-face {
   font-family: "noto_sans_semi_bold";
-  src: url("http://localhost:3000/opencrvs-core/fonts/notosans-semibold-webfont-en.ttf")
+  src: url("http://documentation.opencrvs.org/opencrvs-core/fonts/notosans-semibold-webfont-en.ttf")
     format("truetype");
 }
 
 @font-face {
   font-family: "noto_sans_regular";
-  src: url("http://localhost:3000/opencrvs-core/fonts/notosans-regular-webfont-en.ttf")
+  src: url("http://documentation.opencrvs.org/opencrvs-core/fonts/notosans-regular-webfont-en.ttf")
     format("truetype");
 }
 
