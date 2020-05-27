@@ -53,6 +53,23 @@
   box-shadow: none;
   position: fixed;
 }
+
+.navbar__link--active {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+.main-wrapper {
+  margin-top: 60px;
+}
+.docPage_node_modules-\@docusaurus-theme-classic-src-theme-DocPage- {
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+.hash-link {
+  margin-left: 0px !important;
+}
 /* Docusaurus v1 */
 
 /* Reset */

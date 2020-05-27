@@ -1,0 +1,86 @@
+---
+id: validateRegisterVitalEvent
+title: Validate & register a vital event
+---
+
+import useBaseUrl from "@docusaurus/useBaseUrl";
+
+export const Video = ({ url }) => (
+  <div style={{ position: "relative", paddingBottom: "56.25%", height: 0 }}>
+    <iframe
+      src={url}
+      frameBorder={0}
+      webkitallowfullscreen
+      mozallowfullscreen
+      allowFullScreen
+      style={{
+        position: "absolute",
+        top: 0,
+        left: 0,
+        width: "100%",
+        height: "100%",
+      }}
+    />
+  </div>
+);
+
+This functionality allows a Registrar to review and register a completed vital event registration application form in order to permanently record the vital event.
+
+<Video url="https://www.loom.com/embed/21e90f505cf5423cb9b80d8426618c34"></Video>
+
+## Configuration
+
+Who is allowed to register a vital event can be configured based on country requirements. As standard, the Registrar is the only actor who can register a vital event.
+
+To reflect the common scenario where a Registrar informally delegates their authority (through provision of their username and password) to a data clerk, we have designed the ability to **delegate authority**. This means that the Registrar can formally delegate responsibility to a trusted data clerk/office member. Once they delegate their authority, they can review the activity of this agent through the audit functionality to monitor performance. This ensures that each agent uses their own credentials to access the application and that all interactions can be audited knowing that the who is doing what and when.
+
+Content for SMS messages can be updated based on country requirements.
+
+## User Stories
+
+As a **Registrar**, I want to be able to review applications along with supporting documents in order to register the vital event.
+
+As a **Registrar,** I want to be able to reject an application along with a reason so that the application can be corrected and the record can be recorded accurately.
+
+As a **Registrar,** I want to be able to change data in the application before submission, so that data quality can be ensured.
+
+As a **Registration Agent _with delegated authority_**, I want to be able to review applications along with supporting documents in order to register the vital event.
+
+As a **Registration Agent _with delegated authority_,** I want to be able to reject an application along with a reason so that the application can be corrected and the record can be recorded accurately.
+
+As a **Registration Agent _with delegated authority_,** I want to be able to change data in the application before submission, so that data quality can be ensured.
+
+# Functionality
+
+### View Workqueue
+
+The user is able to view all applications that have been submitted for review by either (i) Field Agent OR (ii) Registration Agent in the Ready for Review workqueue.
+
+### Download record for review
+
+**Low Connectivity Feature:** the user can select which applications to download when they are ready to review them, minimising upfront load time.
+
+### Review application details
+
+The Registrar can review the application alongside the supporting documents associated with each section of the form e.g. photo of Mother's ID next to details of the Mother.
+
+When reviewing the supporting document they can rotate the image or zoom in and out as required to better inspect it.
+
+If information does not match the supporting documents or is inaccurate for any other reason, the Registrar can change the information. Any change made is logged and visible in the [Audit](https://www.notion.so/Audit-a6aeefca07c14e82a06b79a57db74ae9) function.
+
+### Register vital event
+
+The Registrar can either (i) register or (ii) reject the application. If they decide to reject the application, they need to provide a reason why so that anyone following up knows what is required. Upon rejection, the record will appear in the [**Registration Agent**](https://www.notion.so/Registration-Agent-7fe5e31c8fae4d3981e0d4f69576c084) and [**Registrar**](https://www.notion.so/Registrar-3a66b6ccf39b49708baebeb802e1bc1f) **Require Updates** workqueue for follow up.
+
+<img
+  alt="Reason_for_rejection"
+  src={useBaseUrl(
+    "assets/core_functions/Validate_register_a_vital_event_55004a11b116425db26efe2d6808e6ac/Reason_for_rejection.png"
+  )}
+/>
+
+### SMS
+
+If the application is **registered**, the Applicant will receive an SMS informing them of their Registration Number and how and when to collect their certificate.
+
+If the application is **sent for updates**, the Applicant will receive an SMS informing them to visit the registration office to complete the application.

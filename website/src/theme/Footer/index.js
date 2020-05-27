@@ -52,11 +52,19 @@ function Footer() {
         </a>
         <div>
           <h5>Docs</h5>
-          <a href={useBaseUrl("#")}>Product overview</a>
+          <a href={useBaseUrl("docs/system_overview/introduction")}>
+            System overview
+          </a>
           <a href={useBaseUrl("#")}>User types</a>
-          <a href={useBaseUrl("#")}>Core functions</a>
-          <a href={useBaseUrl("#")}>Support functions</a>
-          <a href={useBaseUrl("#")}>System admin functions</a>
+          <a href={useBaseUrl("docs/core_functions/notifyAVitalEvent")}>
+            Core functions
+          </a>
+          <a href={useBaseUrl("docs/support_functions/login")}>
+            Support functions
+          </a>
+          <a href={useBaseUrl("docs/system_admin/userTeam")}>
+            System admin functions
+          </a>
         </div>
         <div>
           <h5>Community</h5>

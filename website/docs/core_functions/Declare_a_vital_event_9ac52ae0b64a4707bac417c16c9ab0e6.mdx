@@ -1,0 +1,140 @@
+---
+id: declareAVitalEvent
+title: Declare a vital event
+---
+
+import useBaseUrl from "@docusaurus/useBaseUrl";
+
+export const Video = ({ url }) => (
+  <div style={{ position: "relative", paddingBottom: "56.25%", height: 0 }}>
+    <iframe
+      src={url}
+      frameBorder={0}
+      webkitallowfullscreen
+      mozallowfullscreen
+      allowFullScreen
+      style={{
+        position: "absolute",
+        top: 0,
+        left: 0,
+        width: "100%",
+        height: "100%",
+      }}
+    />
+  </div>
+);
+
+## Overview
+
+This functionality allows different types of agent to complete and submit a vital event registration application and attach supporting documentation for registration.
+
+<Video url="https://www.loom.com/embed/6ded0fda839b4326a896722a44a73124"></Video>
+
+## Configuration
+
+The OpenCRVS product allows you to configure the form fields as per your legal requirements, however the product does recommend a number of fields to be included based on global best practice.
+
+The form fields included in this version of the product reflect requirements from the Government of Zambia that were captured during development of the Zambian Proof of Concept.
+
+[Birth registration application](birthRegistrationApplication)
+
+[Death registration application](deathRegistrationApplication)
+
+Content for SMS messages can be updated based on country requirements.
+
+## User Stories
+
+The application form can be completed by different actors, on different devices, with different permissions.
+
+As a **Field Agent** I want to complete a birth registration application and send it for review so that it can be registered by the Registrar.
+
+As a **Field Agent** I want to be able to send an application "in-progress" (without all mandatory fields) so that there is a notification of the vital event in the system and the application can be completed at another point in time without replication of work effort.
+
+As a **Registration Agent** I want to complete a birth registration application in an office setting and send it for approval and registration by the Registrar.
+
+As a **Registrar** I want to complete a birth registration application and register the vital event.
+
+As **Any Type of Agent** I want to be able to save a draft application so that I can complete it later on.
+
+As **Any Type of Agent** I want to be able to complete a draft application so that I can send it for review/approval/register it.
+
+## Functionality
+
+### Start an application
+
+The user can start the application from the homepage.
+
+In order to ensure that the applicant understands why the event registration is important and what the end to end process is, the user is provided with an introductory page that encourages them to engage in dialogue with the applicant.
+
+<img
+  alt="Intro to process"
+  src={useBaseUrl(
+    "assets/core_functions/Declare_a_vital_event_9ac52ae0b64a4707bac417c16c9ab0e6/Intro_to_process.png"
+  )}
+/>
+
+### Application & contact details
+
+Before the application form is completed, the user is required to capture who is present for the application along with with a contact phone number to ensure that status updates can be provided throughout the application process. We ask who is there for the application to understand registration behaviors; this can be helpful when designing communication strategies related to civil registration e.g. if only Mother's are present, how can you engage fathers, and vice versa? An application can not be submitted before a contact number is provided.
+
+### Complete the application form
+
+The user is then taken through the application form (example included as per Zambian Proof of Concept).
+
+Key features:
+
+- Question-led application form
+- All mandatory fields are clearly marked with a **\*** so that users know which fields must be completed
+- Validation of NID or Birth Registration Number (BRN) with respective system
+- Auto-population of fields based on NID or BRN data
+- Client-side data validation to ensure data quality
+
+[Client-side data validation on form fields](https://www.notion.so/3eb2d4c1d8f844f4839f81d42633b5ca)
+
+### Attach supporting documents
+
+The user can attach supporting documents to the application. As per country requirements, all required supporting documents needed for the application are listed here.
+
+[Declare_a_vital_event_9ac52ae0b64a4707bac417c16c9ab0e6/31*March_2020*-\_Loom_Recording.mp4](Declare_a_vital_event_9ac52ae0b64a4707bac417c16c9ab0e6/31_March_2020_-_Loom_Recording.mp4)
+
+1. The user selects the type of document they are attaching from the drop down menu
+2. The user selects **Add file** and takes a photo of the document using the tablet/mobile device. If the user is office based, they can scan and upload the document.
+3. The user can preview the photo. If it is clear, they can **continue.** If it is not clear, they can **Retake photo**
+4. While the document is being uploaded, the user can see that it is being uploaded . Once the document is uploaded, the user can see a clickable and viewable link above the dropdown.
+5. Once the user has attached all documents, they progress to the next stage.
+
+### Review the application before submission
+
+Before the application is submitted for review, the user needs to review the data that they have entered to ensure that it is correct.
+
+If the user wants to change any of the information before submission, they can click "change" next to the relevant field. Once they select "change" they will be taken to the form field in the form that requires the update. After making the change, the user can navigate "Back to Review" from the bottom of the page where the field was changed. This prevents the user from navigating all the way back through the form.
+
+Any mandatory field that has not been completed is highlighted clearly in red text so that the user knows that this information is missing.
+
+### Submit the application
+
+The end user can submit the application in two states:
+
+1. Complete application:
+
+<img
+  alt="Application_Complete"
+  src={useBaseUrl(
+    "assets/core_functions/Declare_a_vital_event_9ac52ae0b64a4707bac417c16c9ab0e6/Application_Complete.png"
+  )}
+/>
+
+1. In-progress application:
+
+<img
+  alt="Application_Incomplete"
+  src={useBaseUrl(
+    "assets/core_functions/Declare_a_vital_event_9ac52ae0b64a4707bac417c16c9ab0e6/Application_Incomplete.png"
+  )}
+/>
+
+**Low Connectivity Feature:** if the user is offline, they can still submit the application and continue to do their work. They will see the application status in the _Sent for Review_ workqueue with a status that informs them it submission is pending connectivity. Once the application has been sent, it will appear as sent with a green tick.
+
+### Submit the application
+
+On successful submission of the application, the Applicant will receive an SMS with the Tracking ID of the application and guidance on next steps.

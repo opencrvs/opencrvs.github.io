@@ -33,7 +33,16 @@ const siteConfig = {
         src: "img/logo.svg",
       },
       links: [
-        { to: "introduction", label: "Docs", position: "right" },
+        {
+          to: "docs/system_overview/introduction",
+          label: "Docs",
+          position: "right",
+        },
+        {
+          to: "docs/community/introduction",
+          label: "Community",
+          position: "right",
+        },
         {
           href: "https://github.com/opencrvs/opencrvs-core",
           label: "Code",
@@ -64,9 +73,9 @@ module.exports = {
       {
         docs: {
           // Docs folder path relative to website dir.
-          path: "../docs",
+          path: "docs",
           // Sidebars file relative to website dir.
-          sidebarPath: require.resolve("./sidebars.json"),
+          sidebarPath: require.resolve("./sidebar.js"),
         },
         theme: {
           customCss: require.resolve("./src/css/custom.css"),

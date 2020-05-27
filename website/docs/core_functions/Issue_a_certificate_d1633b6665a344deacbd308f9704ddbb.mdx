@@ -1,0 +1,76 @@
+---
+id: issueACertificate
+title: Issue a certificate
+---
+
+import useBaseUrl from "@docusaurus/useBaseUrl";
+
+export const Video = ({ url }) => (
+  <div style={{ position: "relative", paddingBottom: "56.25%", height: 0 }}>
+    <iframe
+      src={url}
+      frameBorder={0}
+      webkitallowfullscreen
+      mozallowfullscreen
+      allowFullScreen
+      style={{
+        position: "absolute",
+        top: 0,
+        left: 0,
+        width: "100%",
+        height: "100%",
+      }}
+    />
+  </div>
+);
+
+This functionality allows either a [**Registration Agent**](https://www.notion.so/Registration-Agent-7fe5e31c8fae4d3981e0d4f69576c084) or [**Registrar**](https://www.notion.so/Registrar-3a66b6ccf39b49708baebeb802e1bc1f) to print a certificate, either with or without digital certificates.
+
+<Video url="https://www.loom.com/embed/f04130bd98364626aee0c51bf127d5e7"></Video>
+
+## Configuration
+
+The certificate can be formatted as per a country's requirements. OpenCRVS also has a _recommended_ certificate based on global best practice.
+
+The ability to use digital signatures on certificates, print the certificate in advance for handwritten signatures or print on collection.
+
+:::tip pro tip
+The use of digital signatures has been shown to drastically improve service delivery by reducing the time registration staff need to wait to get handwritten signatures from Registrars. The Audit function effectively tracks every user's actions - this can mitigate the occurrence of any fraudulent activity.
+:::
+
+## User Stories
+
+As a **Registration Agent**, I want to be able to print a certificate, so that I can collect the signatures of the Registrar before issuance.
+
+As a **Registration Agent _with delegated authority_**, I want to be able to print a certificate with the digital signature of a Registrar, so that I can issue it immediately.
+
+As a **Registrar**, I want to be able to print a certificate, so that I can collect the signatures of the Registrar before issuance.
+
+As a **Registrar**, I want to be able to print a certificate with my digital signature, so that I can issue it immediately.
+
+# Functionality
+
+### Download to print
+
+**Low connectivity feature:** The user is required to download the record that they want to print the certificate for. This prevents overloading bandwidth and affecting the user's ability to print the certificate they need to by downloading all records in the workqueue at once.
+
+### Identify who is collecting the certificate
+
+The user is required to identify who is collecting the certificate so that there is a record of who collected it.
+
+### Edit certificate content
+
+If the user wants to edit the content of the certificate before printing, they can do so to prevent future change requests for the applicant. This action is captured in the [](https://www.notion.so/daeb0f6042934bd38cd9bbf7ed59acdc) function.
+
+### Print certificate
+
+When the user chooses to print the certificate, it opens in a new tab in PDF format. From this page, the user can print using the device's printer.
+
+The certificate can be printed with a digital signature in advance or on collection.
+
+<img
+  alt="Print_certificate"
+  src={useBaseUrl(
+    "assets/core_functions/Issue_a_certificate_d1633b6665a344deacbd308f9704ddbb/Print_certificate.png"
+  )}
+/>

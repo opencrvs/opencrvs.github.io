@@ -661,7 +661,7 @@ function Home() {
         <div className="inner">
           <ProjectTitle tagline={siteConfig.tagline} title={siteConfig.title} />
           <PromoSection>
-            <Button href={useBaseUrl("docs/introduction")}>
+            <Button href={useBaseUrl("docs/system_overview/introduction")}>
               See documentation
             </Button>
           </PromoSection>

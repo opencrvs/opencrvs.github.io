@@ -1,0 +1,93 @@
+---
+id: login
+title: Login
+---
+
+import useBaseUrl from "@docusaurus/useBaseUrl";
+
+This functionality supports users logging in for the first time as well as the ongoing secure identification and provision of access to users.
+
+## Configuration
+
+The frequency of when the user is required to login with username and password can be configured.
+
+_Recommended:_
+
+- In countries where connectivity is good, you can set this more frequently e.g. the user must login with username and password every week.
+- In countries where connectivity is less good, you can set this less frequently so that users can unlock the application primarily using the PIN.
+
+NB. Security considerations should be taken into account when making this decision.
+
+## User Stories
+
+As **a user**, I want to be able to be able to login to the application so that I can conduct my work.
+
+As **a user**, I want to be able to be able to reset my password in case I forget it, so that I can log back in and continue working.
+
+As **a user**, I want to be able to reset my username in case I forget it, so that I can log back in and continue working.
+
+As **a use**r I want to be able to easily access the application without using my username and password every time, so that I can save time.
+
+# Functionality
+
+### Set security questions
+
+The first the time user logs in they use a username and password that is generated for them based on their first and last name. On first login, the user is required to:
+
+1. Choose a new secure password
+2. Set 3 security questions that can be used to verify identity at a later point
+3. Confirm their details and update as required
+
+<img
+  alt="Security_questions"
+  src={useBaseUrl(
+    "assets/support_functions/Login_8db5ac07d5ed48599beebedfb58dd273/Security_questions.png"
+  )}
+/>
+
+<img
+  alt="Set_password"
+  src={useBaseUrl(
+    "assets/support_functions/Login_8db5ac07d5ed48599beebedfb58dd273/Set_password.png"
+  )}
+/>
+
+### Login with username & password
+
+**First login**
+
+Once the username and password is set, the user will login for the first time. This login process is the same from this point forward and will be required at a frequency as per the configuration made. In Zambia, this is set to request login details once per week.
+
+**Two-factor Authentication:** When the user logs in with their username and password, they will be sent a 6 digit verification code to the mobile phone number associated with their account. Upon entering this code, the user will be taken to the homepage of their application, dependent on their [User types](https://www.notion.so/User-types-06ba450af0ea4de0adf3239dbda5f95f).
+
+### Unlock application with PIN
+
+**First login**
+
+The first time the user logs into the application with their username and password, they will be prompted to enter a 4 digit PIN. This PIN will allow them to quickly access the application when the application locks itself, preventing access by anyone other than the user and meaning the user does not need to enter their username and password and authenticate every time they use the app.
+
+<img
+  alt="FA_Tablet_SetPin-2"
+  src={useBaseUrl(
+    "assets/support_functions/Login_8db5ac07d5ed48599beebedfb58dd273/FA_Tablet_SetPin-2.png"
+  )}
+/>
+
+<img
+  alt="Tablet_7inch"
+  src={useBaseUrl(
+    "assets/support_functions/Login_8db5ac07d5ed48599beebedfb58dd273/Tablet_7inch.1.1.1.1.1.1.1.1.png"
+  )}
+/>
+
+### Forgot username or password
+
+If the user forgets their username or password, they can create a new one by following the "Can't Login" steps from the login screen.
+
+The user is required to:
+
+1. Provide the phone number associated with the account
+2. Enter a verification code sent to them on SMS
+3. Answer one of the 3 security questions we asked them to create during the onboarding process
+
+Upon successful completion of these steps, the user can create a new password or is sent a reminder of their username.

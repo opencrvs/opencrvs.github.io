@@ -1,0 +1,55 @@
+---
+id: recordVerification
+title: Record verification
+---
+
+import useBaseUrl from "@docusaurus/useBaseUrl";
+
+export const Video = ({ url }) => (
+  <div style={{ position: "relative", paddingBottom: "56.25%", height: 0 }}>
+    <iframe
+      src={url}
+      frameBorder={0}
+      webkitallowfullscreen
+      mozallowfullscreen
+      allowFullScreen
+      style={{
+        position: "absolute",
+        top: 0,
+        left: 0,
+        width: "100%",
+        height: "100%",
+      }}
+    />
+  </div>
+);
+
+This functionality allows an authorized user to verify specific details of a vital event record e.g. age, name etc. This can extend the utility of the Civil Registry for rights-based purposes:
+
+Age verification: this functionality supports a set of defined users to verify the age of an individual by checking their details in the civil registration database. This can be used to verify the ages of individuals before a marriage ceremony takes place, thus preventing harmful child marriage practices.
+
+## Configuration
+
+Which users can use the age verification service.
+
+What type of communication method you use for communication e.g. Facebook messenger, Telegram, SMS or USSD.
+
+## User stories
+
+As an authorised user, I want to authenticate / verify details of an individual and the vital event by checking the civil registration database, so that I can proceed with my responsibilities
+
+As a **marriage official,** I want to be able to check the age of the bride and bridegroom, so that I can inform them whether the marriage can officially take place based on their age (18+ or not)
+
+# Functionality
+
+### Verify the age of an individual (currently in prototype)
+
+Basic information about the individual is required to perform an age check. The current configuration requests the individual's first and last name, sex, district of birth and mother’s name. \*\*\*\*
+
+Below is an example of how this functionality works
+
+<Video url="https://www.loom.com/embed/21e90f505cf5423cb9b80d8426618c34"></Video>
+
+## **_Coming Soon_**
+
+User is able to to verify specific details of a vital event record by querying the OpenCRVS database.

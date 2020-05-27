@@ -1,0 +1,135 @@
+---
+id: performanceManagement
+title: Performance management
+---
+
+import useBaseUrl from "@docusaurus/useBaseUrl";
+
+This functionality provides:
+
+1. **Reports:** structured reports that are often required in law and used to monitor basic performance indicators e.g. registration rates, disaggregated by location, gender and age. Available to download in PDF format.
+2. **Operational Dashboard:** interactive dashboard that supports registration managers to understand the performance of their system and staff, and subsequently identify low and high performing areas so they can respond accordingly.
+
+## Configuration
+
+Reports can be updated to reflect country requirements. Details of the reports used in Bangladesh can be seen below.
+
+The operational dashboard as designed will provide a great foundation upon which to manage civil registration services. If additional KPIs are identified, these can be added to the product through customisation.
+
+## User Stories
+
+- As a **Registrar/Registration Manager**, I want to be able to see a list of weekly reports, so that I can check performance and export results to analyse and share with others.
+- As a **Registrar/System Administrator/Registration Manager,** I want to be able to view live operational data so that I can understand bottlenecks and barriers and respond accordingly.
+
+# Functionality
+
+### Reports
+
+In Bangladesh, the below reports are available to view and download as a PDF or CSV file:
+
+**Birth**
+
+- Total # & % of births registered. _% = out of the total # registered._
+- Total # & % of deaths registered. _% = out of the total # registered._
+- Total # & % of births registered by time period (within 45 days, 46 days - 1 year, 1 year - 5 years, 5 years +), from date of occurrence
+- Estimated vs. total births registered within 45 days
+- Total # & % of certificates issued. _% = out of the total # registered._
+- Total TK collected for birth certificates
+
+**Death**
+
+- Total # & % of deaths registered. _% = out of the total # registered._
+- Total # & % of deaths registered. _% = out of the total # registered._
+- Total # & % of deaths registered by time period (within 45 days, 46 days - 1 year, 1 year - 5 years, 5 years +), from date of occurrence
+- Estimated vs. total deaths registered within 45 days
+- Total # & % of certificates issued. _% = out of the total # registered._
+- Total TK collected for death certificates
+
+<img
+  alt="Untitled"
+  src={useBaseUrl(
+    "assets/support_functions/Performance_management_22b08f000e904ccf8b3e70351a52e8ec/Untitled.png"
+  )}
+/>
+
+### Operational Dashboard
+
+**Key Data**
+
+Filters available: by location, over time,
+
+- Birth registration rate
+- Birth registration rate within 45 days
+- Death registration rate
+- Death registration rate within 45 days
+- Total number (#) and percentage (%) breakdown of the applications started by source (community, hospital, office) from [ date range ] (eg. October 2019 - October 2020)
+
+<img
+  alt="Operational_dashboard"
+  src={useBaseUrl(
+    "assets/support_functions/Performance_management_22b08f000e904ccf8b3e70351a52e8ec/Operational_dashboard.png"
+  )}
+/>
+
+**Performance by Field Agent**
+
+For countries where they have a network of field agents that offer registration services at the community level, it is important to monitor their individual performance and create an element of accountability. This view allows you to see how people are performing, create competition between agents, and hold people to account.
+
+- Type of Agent
+- Office
+- Start month (when they started work)
+- Applications sent
+- Avg. time to send complete application
+- Avg. number of sessions (saved and then continued)
+- Sent in progress
+- Total registered
+- Updates required by registrar before registration
+- Required updates
+- % of applications sent on each day of the week: Sun, Mon, Tue, Wed, Thurs, Fri, Sat
+
+<img
+  alt="Operational_field_agents"
+  src={useBaseUrl(
+    "assets/support_functions/Performance_management_22b08f000e904ccf8b3e70351a52e8ec/Operational_field_agents.png"
+  )}
+/>
+
+**Current applications in workflow**
+
+This lists all applications currently "active" in the OpenCRVS workflow. This allows performance managers to investigate where action needs to be taken based on the status of the application and who is responsible for it at that time.
+
+- Tracking ID
+- Status
+- Event type
+- English name
+- Bengali name
+- Applicant
+- Application started (date)
+- Started by
+- Date of event
+- Time in in-progress workqueue
+- Time in ready for review workqueue
+- Time in requires updates workqueue
+- Time in waiting for approval workqueue
+- Time in waiting for BRIS (existing CRVS system) workqueue
+- Time in ready to print workqueue
+
+<img
+  alt="Operational_Current_applications_in_workflow"
+  src={useBaseUrl(
+    "assets/support_functions/Performance_management_22b08f000e904ccf8b3e70351a52e8ec/Operational_Current_applications_in_workflow.png"
+  )}
+/>
+
+## _Coming Soon_
+
+**Performance by each type of agent**
+
+**Data quality:**
+
+- Which mandatory fields are most commonly incomplete?
+- Reasons for in-progress applications
+- Total # & % of fields changed by a reviewing agent
+- Total # & % of applications sent for updates
+- Total # & % of records flagged as a duplicate
+- Which optional fields are most commonly incomplete?
