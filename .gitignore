@@ -2,6 +2,7 @@ opencrvs.code-workspace
 
 # dependencies
 /node_modules
+/node_modules/.cache
 
 # production
 /build

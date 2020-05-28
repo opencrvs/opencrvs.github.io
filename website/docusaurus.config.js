@@ -50,8 +50,7 @@ const siteConfig = {
         },
       ],
     },
-    // Equivalent to `docsSideNavCollapsible`.
-    sidebarCollapsible: false,
+    sidebarCollapsible: true,
     // ...
   },
 

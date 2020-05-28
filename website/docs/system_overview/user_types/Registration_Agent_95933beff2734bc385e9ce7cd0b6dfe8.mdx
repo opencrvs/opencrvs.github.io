@@ -1,0 +1,66 @@
+---
+id: registrationAgent
+title: Registration Agent
+---
+
+import useBaseUrl from "@docusaurus/useBaseUrl";
+
+This user responds to the reality in many countries that the Registrar does not conduct digital activities and instead delegates this responsibility to a data clerk of some description.
+
+- Able to update incomplete applications from field agents
+- Able to complete applications sent from DHIS2
+- Able to create birth and death registration applications in an office setting and send these for review by the Registrar
+- Able to review and validate applications sent from a field agent
+- Able to send reviewed applications for review and registration by the Registrar
+- Able to request a correction to a record to the Registrar
+
+### Workqueues
+
+The Registration Agent sees 5 work-queues to help them effectively manage their workload:
+
+1. **In Progress:**
+
+- Any draft applications that they have started and not completed.
+- Any incomplete applications (without all mandatory fields) received from field agents.
+- Any notifications received from existing systems e.g. digital health systems like DHIS2
+
+From this workqueue, the registration agent can complete and submit the application.
+
+2. **Ready for review:** any applications that have been submitted for review (complete with all mandatory information) from field agents.
+
+3. **Sent for updates:** any applications that require updates before registration i.e. rejected with a reason - this requires follow-up over the phone or in-person.
+
+4. **Sent for approval:** any applications that have been reviewed, are correct as per their review, and require registration by the Registrar.
+
+5. **Ready to print:** any applications that have been registered by the Registrar and the certificate is ready to print and be issued.
+
+<img
+  alt="Registration_Agent_Home"
+  src={useBaseUrl(
+    "assets/system_overview/user_types/Registration_Agent_95933beff2734bc385e9ce7cd0b6dfe8/Registration_Agent_Home.png"
+  )}
+/>
+
+### Example users
+
+**Union Digital Centre (UDC) Entrepreneur in Bangladesh**
+
+Jamal is a UDC Entrepreneur in Joymonirhat Union Parishad, Bhurungamari, Bangladesh. He is responsible for digital birth and death registration activities at the registration office, supporting the Registrars in their official capacity. He loves how easy it is to review the applications because "I can see the application details and the supporting documents side-by-side. This makes it easy to check if the information is correct and I don't have to store paper documents in the office".
+
+<img
+  alt="UDC"
+  src={useBaseUrl(
+    "assets/system_overview/user_types/Registration_Agent_95933beff2734bc385e9ce7cd0b6dfe8/UDC.png"
+  )}
+/>
+
+### Site map
+
+The functions available to the Registration Agent are visible to the user as per the below sitemap.
+
+<img
+  alt="ia_regAgent2x"
+  src={useBaseUrl(
+    "assets/system_overview/user_types/Registration_Agent_95933beff2734bc385e9ce7cd0b6dfe8/ia_regAgent2x.png"
+  )}
+/>

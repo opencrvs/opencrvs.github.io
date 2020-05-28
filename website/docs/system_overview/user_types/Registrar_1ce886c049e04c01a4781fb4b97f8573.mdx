@@ -1,0 +1,77 @@
+---
+id: registrar
+title: Registrar
+---
+
+import useBaseUrl from "@docusaurus/useBaseUrl";
+
+This user is the officially mandated individual responsible for civil registration
+
+- Able to update incomplete applications from field agents
+- Able to complete applications sent from DHIS2
+- Able to create birth and death registration applications and register these events
+- Able to view performance reports
+- Able to view operational dashboard
+- Able to review record correction requests and send for approval to Registration Manager
+- Able to request a correction to a record to Registration Manager
+- Able to audit users and records
+
+### Workqueues
+
+The Registrar sees 5 work-queues to help them effectively manage their workload:
+
+1. **In Progress:**
+
+- Any draft applications that they have started and not completed.
+- Any in-progress applications (without all mandatory fields completed) that they have received from field agents.
+- Any notifications that they have received from health facilities and existing healthy systems e.g. DHIS2.
+
+From this workqueue, the registration agent can complete and submit the application.
+
+2. **Ready for review:** any applications that have been submitted for review (complete with all mandatory information) from field agents.
+
+For offices where a **Registration Agent** reviews applications before the Registrar, the Registrar can see this review has been completed when the record is marked with the below green tick.
+
+<img
+  alt="Reviewed_by_Registration_Agent"
+  src={useBaseUrl(
+    "assets/system_overview/user_types/Registrar_1ce886c049e04c01a4781fb4b97f8573/Reviewed_by_Registration_Agent.png"
+  )}
+/>
+
+3. **Sent for updates:** any applications that require updates before registration i.e. rejected with a reason - this requires follow-up over the phone or in-person.
+
+4. **Ready to print:** any applications that have been registered by the Registrar and the certificate is ready to print and be issued.
+
+<img
+  alt="Registrar_Home"
+  src={useBaseUrl(
+    "assets/system_overview/user_types/Registrar_1ce886c049e04c01a4781fb4b97f8573/Registrar_Home.png"
+  )}
+/>
+
+5. **Corrections requested:** any corrections to a record requested by the Registration Agent that need to be reviewed and sent for approval to the Registration Manager.
+
+### **Example Users**
+
+**Union Parishad Secretary - Registrar, Bangladesh**
+
+Likhon is a UP Secretary in Joymonirhat Union Parishad, Bhurungamari, Bangladesh. He is passionate about all of the public services that he is responsible for and is always looking for better ways of doing things. He is happy using OpenCRVS because "the service is taken to those that live far from this office. Using the system I can see all the details and documents and register the birth or death here, before they travel here, only once!".
+
+<img
+  alt="Untitled"
+  src={useBaseUrl(
+    "assets/system_overview/user_types/Registrar_1ce886c049e04c01a4781fb4b97f8573/Untitled.png"
+  )}
+/>
+
+### Site Map
+
+The functions available to the Registrar are visible to the user as per the below sitemap.
+
+<img
+  alt="ia_registrar2x"
+  src={useBaseUrl(
+    "assets/system_overview/user_types/Registrar_1ce886c049e04c01a4781fb4b97f8573/ia_registrar2x.png"
+  )}
+/>

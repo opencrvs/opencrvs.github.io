@@ -7,7 +7,7 @@ The functionality supports essential system administration activities, managing 
 
 ## Configuration
 
-Standard user roles are defined in [User types](https://www.notion.so/User-types-06ba450af0ea4de0adf3239dbda5f95f). If you want to change these user types, this will require customisation.
+Standard user roles are defined in [User types](../system_overview/user_types/overviewUserTypes). If you want to change these user types, this will require customisation.
 
 The details required for each user can be configured as per country requirements.
 

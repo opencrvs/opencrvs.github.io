@@ -45,7 +45,7 @@ function Home() {
       <div className="productShowcaseSection paddingBottom">
         <div className="openCrvsApp">
           <img
-            src={useBaseUrl("img/openCrvsApp.png")}
+            src={useBaseUrl("img/openCrvsApp@2x.png")}
             alt="OpenCRVS Application"
           />
         </div>
@@ -61,10 +61,10 @@ function Home() {
     <div className="productShowcaseSection container paddingBottom">
       <div className="wrapper wrapperTitle">
         <h2>A new model for civil registration</h2>
-        <div className="gridBlock bulletBlock">
+        <div className="gridBlock">
           <div className="blockElement threeByGridBlock">
             <div className="blockContent">
-              <h4 className="bulletHeader">
+              <h4>
                 <div>
                   <span>
                     <p>Increases birth and death registration rates</p>
@@ -73,26 +73,17 @@ function Home() {
               </h4>
               <div>
                 <span>
-                  <ul className="bullets">
-                    <li>
-                      Active registration at the community level to avoid
-                      prohibitive travel and costs
-                    </li>
-                    <li>
-                      Uses networks of trusted registration agents within the
-                      community
-                    </li>
-                    <li>
-                      Timely notification of births and deaths from hospitals
-                    </li>
-                  </ul>
+                  <p>
+                    Through an active registration model that takes services to
+                    where they occur in the community and health facilities.
+                  </p>
                 </span>
               </div>
             </div>
           </div>
           <div className="blockElement threeByGridBlock">
             <div className="blockContent">
-              <h4 className="bulletHeader">
+              <h4>
                 <div>
                   <span>
                     <p>Makes civil registration easy</p>
@@ -101,24 +92,17 @@ function Home() {
               </h4>
               <div>
                 <span>
-                  <ul className="bullets">
-                    <li>
-                      Simplified application process that includes reduced data
-                      collection requirements
-                    </li>
-                    <li>
-                      Customer-centric registration services, including
-                      application status updates
-                    </li>
-                    <li>Automated validation for accurate data collection</li>
-                  </ul>
+                  <p>
+                    Through a simplified application process that puts the
+                    experience of our users first.
+                  </p>
                 </span>
               </div>
             </div>
           </div>
           <div className="blockElement threeByGridBlock">
             <div className="blockContent">
-              <h4 className="bulletHeader">
+              <h4>
                 <div>
                   <span>
                     <p>Drives efficiencies for government service delivery</p>
@@ -127,20 +111,11 @@ function Home() {
               </h4>
               <div>
                 <span>
-                  <ul className="bullets">
-                    <li>
-                      Works with other e-government systems as a foundation for
-                      effective ID management
-                    </li>
-                    <li>
-                      Real-time operational data that supports increased
-                      accountability and performance management
-                    </li>
-                    <li>
-                      Digital first to reduce manual processes and paper
-                      archives
-                    </li>
-                  </ul>
+                  <p>
+                    By working well with other e-government systems and by
+                    providing real-time operational data that supports increased
+                    accountability and performance management
+                  </p>
                 </span>
               </div>
             </div>
@@ -155,9 +130,9 @@ function Home() {
       <div className="wrapper wrapperTitle">
         <h2>OpenCRVS process</h2>
         <p>
-          While every country will have a slightly different process that uses
-          different actors, OpenCRVS supports key elements of a standardised
-          process that reflects best practice and drives efficiency.
+          While every country is unique, OpenCRVS supports key elements of a
+          standardised process that reflects best practice and drives
+          efficiency.
         </p>
         <div className="gridBlock processBlock">
           <div className="blockElement twoByGridBlock">
@@ -185,13 +160,12 @@ function Home() {
                 <h3>Notify a vital event</h3>
               </div>
               <p>
-                This is an optional step to collect a minimal set of vital event
-                data that can be used for (i) planning and (ii) follow-up
-                purposes. In OpenCRVS we call it an “in-progress” application
-                because action is required to complete it. You can receive an
-                “in-progress” application from the OpenCRVS application (as an
-                incomplete application) as well as a number of external sources
-                including:
+                This is the collection of a minimal set of vital event data that
+                can be used for (i) planning and (ii) follow-up purposes. In
+                OpenCRVS we call it an “in-progress” application because action
+                is required to complete it. You can receive an “in-progress”
+                application from the OpenCRVS application (as an incomplete
+                application) as well as a number of external sources including:
               </p>
               <ul className="bullets">
                 <li>
@@ -203,7 +177,10 @@ function Home() {
                 </li>
                 <li>Refugee registration systems</li>
               </ul>
-              <a className="homeLink" href="#">
+              <a
+                className="homeLink"
+                href={useBaseUrl("docs/core_functions/notifyAVitalEvent")}
+              >
                 Learn more
               </a>
             </div>
@@ -212,7 +189,7 @@ function Home() {
             <div className="blockContent processContent">
               <div className="processImage">
                 <img
-                  src={useBaseUrl("img/process1.png")}
+                  src={useBaseUrl("img/process1@2x.png")}
                   alt="Notify a vital event"
                 />
               </div>
@@ -224,7 +201,7 @@ function Home() {
             <div className="blockContent processContent">
               <div className="processImage">
                 <img
-                  src={useBaseUrl("img/process2.png")}
+                  src={useBaseUrl("img/process2@2x.png")}
                   alt="Declare a vital event"
                 />
               </div>
@@ -267,7 +244,10 @@ function Home() {
                   In an office on a PC, laptop or any other available device
                 </li>
               </ul>
-              <a className="homeLink" href="#">
+              <a
+                className="homeLink"
+                href={useBaseUrl("docs/core_functions/declareAVitalEvent")}
+              >
                 Learn more
               </a>
             </div>
@@ -298,12 +278,18 @@ function Home() {
                 <h3>Validate and register a vital event</h3>
               </div>
               <p>
-                In OpenCRVS, this is ideally done in one step. In the “Ready to
-                Review” workqueue, the Registrar (or Registration Agent) can
-                find all applications sent from the field, review them alongside
-                supporting documents, and then either reject or register them.
+                In the “Ready to review” workqueue, the Registrar (or
+                Registration Agent) can find all applications sent from the
+                field, review them alongside supporting documents, and then
+                either reject or register them. Ideally this is done by one
+                actor in one step.
               </p>
-              <a className="homeLink homeLinkNoBullets" href="#">
+              <a
+                className="homeLink homeLinkNoBullets"
+                href={useBaseUrl(
+                  "docs/core_functions/validateRegisterVitalEvent"
+                )}
+              >
                 Learn more
               </a>
             </div>
@@ -312,7 +298,7 @@ function Home() {
             <div className="blockContent processContent">
               <div className="processImage">
                 <img
-                  src="img/process3.png"
+                  src="img/process3@2x.png"
                   alt="Validate and register a vital event"
                 />
               </div>
@@ -324,7 +310,7 @@ function Home() {
             <div className="blockContent processContent">
               <div className="processImage">
                 <img
-                  src={useBaseUrl("img/process4.png")}
+                  src={useBaseUrl("img/process4@2x.png")}
                   alt="Issue a certificate"
                 />
               </div>
@@ -361,7 +347,10 @@ function Home() {
                 digital signatures aren’t allowed it can be printed in advance
                 and signatures added by hand.
               </p>
-              <a className="homeLink homeLinkNoBullets" href="#">
+              <a
+                className="homeLink homeLinkNoBullets"
+                href={useBaseUrl("docs/core_functions/issueACertificate")}
+              >
                 Learn more
               </a>
             </div>
@@ -391,8 +380,8 @@ function Home() {
                 <h3>Use civil registration data</h3>
               </div>
               <p>
-                Civil registration data is incredibly valuable and OpenCRVS
-                helps you realise this through:
+                Civil registration data is incredibly valuable. OpenCRVS helps
+                you realise this through:
               </p>
               <ul className="bullets">
                 <li>
@@ -416,7 +405,12 @@ function Home() {
                   indicators that can be taken from civil registration data.
                 </li>
               </ul>
-              <a className="homeLink" href="#">
+              <a
+                className="homeLink"
+                href={useBaseUrl(
+                  "docs/support_functions/performanceManagement"
+                )}
+              >
                 Learn more
               </a>
             </div>
@@ -425,7 +419,7 @@ function Home() {
             <div className="blockContent processContent">
               <div className="processImage">
                 <img
-                  src={useBaseUrl("img/process5.png")}
+                  src={useBaseUrl("img/process5@2x.png")}
                   alt="Use civil registration data"
                 />
               </div>
@@ -444,11 +438,17 @@ function Home() {
           <div className="blockElement threeByGridBlock">
             <div className="blockContent">
               <div className="lowResourceImage">
-                <img src={useBaseUrl("img/low-resources1.png")} alt="Outbox" />
+                <img
+                  src={useBaseUrl("img/low-resources1@2x.png")}
+                  alt="Outbox"
+                />
               </div>
               <h3>Offline &amp; low connectivity working</h3>
               <p>Complete applications offline and send when you reconnect. </p>
-              <a className="homeLink homeLinkNoBullets" href="#">
+              <a
+                className="homeLink homeLinkNoBullets"
+                href={useBaseUrl("docs/system_overview/keyFeatures")}
+              >
                 Learn more
               </a>
             </div>
@@ -458,7 +458,7 @@ function Home() {
             <div className="blockContent">
               <div className="lowResourceImage">
                 <img
-                  src={useBaseUrl("img/low-resources2.png")}
+                  src={useBaseUrl("img/low-resources2@2x.png")}
                   alt="De-duplication"
                 />
               </div>
@@ -467,7 +467,10 @@ function Home() {
                 Increase data quality by identifying potential duplicate
                 applications with the OpenCRVS deduplication engine.{" "}
               </p>
-              <a className="homeLink homeLinkNoBullets" href="#">
+              <a
+                className="homeLink homeLinkNoBullets"
+                href={useBaseUrl("docs/system_overview/keyFeatures")}
+              >
                 Learn more
               </a>
             </div>
@@ -476,14 +479,20 @@ function Home() {
           <div className="blockElement threeByGridBlock">
             <div className="blockContent">
               <div className="lowResourceImage">
-                <img src={useBaseUrl("img/low-resources3.png")} alt="Outbox" />
+                <img
+                  src={useBaseUrl("img/low-resources3@2x.png")}
+                  alt="Outbox"
+                />
               </div>
               <h3>Multi-language</h3>
               <p>
                 Users can easily change the language which they use to make the
                 experience as local as possible.{" "}
               </p>
-              <a className="homeLink homeLinkNoBullets" href="#">
+              <a
+                className="homeLink homeLinkNoBullets"
+                href={useBaseUrl("docs/system_overview/keyFeatures")}
+              >
                 Learn more
               </a>
             </div>
@@ -506,7 +515,7 @@ function Home() {
         <div>
           <img
             className="funcArchImage"
-            src="img/oCRVS_systemArchitecture.png"
+            src="img/oCRVS_systemArchitecture_2@2x.png"
             alt="OpenCRVS Functional Architecture"
           />
         </div>
@@ -594,7 +603,7 @@ function Home() {
           <div className="blockContent logoContent">
             <img
               className="logoImage planLogo"
-              src="img/logo1.png"
+              src="img/logo1@2x.png"
               alt="Plan logo"
             />
           </div>
@@ -604,7 +613,7 @@ function Home() {
           <div className="blockContent logoContent">
             <img
               className="logoImage jembiLogo"
-              src="img/logo2.png"
+              src="img/logo2@2x.png"
               alt="Jembi logo"
             />
           </div>
@@ -614,7 +623,7 @@ function Home() {
           <div className="blockContent logoContent">
             <img
               className="logoImage vitalLogo"
-              src="img/logo3.png"
+              src="img/logo3@2x.png"
               alt="Vital Strategies logo"
             />
           </div>
@@ -623,7 +632,7 @@ function Home() {
           <div className="blockContent logoContent">
             <img
               className="logoImage ozLogo"
-              src="img/logo4.png"
+              src="img/logo4@2x.png"
               alt="Australian Aid logo"
             />
           </div>
@@ -633,7 +642,7 @@ function Home() {
           <div className="blockContent logoContent">
             <img
               className="logoImage dsLogo"
-              src="img/logo5.png"
+              src="img/logo5@2x.png"
               alt="Digital Square logo"
             />
           </div>
@@ -643,7 +652,7 @@ function Home() {
           <div className="blockContent logoContent">
             <img
               className="logoImage dialLogo"
-              src="img/logo6.png"
+              src="img/logo6@2x.png"
               alt="DIAL logo"
             />
           </div>
