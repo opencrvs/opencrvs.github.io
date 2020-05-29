@@ -19,7 +19,6 @@ function Footer() {
   const logoUrl = useBaseUrl(logo.src);
 
   useEffect(() => {
-    console.log("Hi");
     const gitter = document.createElement("script");
 
     gitter.src = "https://sidecar.gitter.im/dist/sidecar.v1.js";
