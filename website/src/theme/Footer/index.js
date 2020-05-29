@@ -67,16 +67,19 @@ function Footer() {
         </div>
         <div>
           <h5>Community</h5>
-          <a href={useBaseUrl("#")}>Help</a>
-
-          <a href="https://www.opencrvs.org/case-studies" target="_blank">
-            Case studies
+          <a href={useBaseUrl("docs/community/contributing")}>Contributing</a>
+          <a href={useBaseUrl("docs/community/implementations")}>
+            Implementations
           </a>
+          <a href={useBaseUrl("docs/community/team")}>Team</a>
         </div>
         <div>
           <h5>Legal</h5>
-          <a href="#" target="_blank">
+          <a href="https://www.plan.org.au/contact/privacy" target="_blank">
             Privacy
+          </a>
+          <a href="https://www.opencrvs.org/license" target="_blank">
+            License
           </a>
         </div>
         <div>

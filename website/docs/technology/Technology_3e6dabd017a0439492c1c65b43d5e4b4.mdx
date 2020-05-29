@@ -1,0 +1,40 @@
+---
+id: technologyIntroduction
+title: Technology Introduction
+---
+
+import useBaseUrl from "@docusaurus/useBaseUrl";
+
+This is a placeholder so I can complete broken links. It will be ready for review by the 1st June.
+
+## Architecture
+
+The technical architecture of OpenCRVS was designed to conform to the OpenHIE architectural standard and FHIR.
+
+The Open Health Information Exchange (OpenHIE) initiative is a Global Mission-Driven Community of Practice. Dedicated to improving the health of the underserved through open and collaborative development & interoperable data standards
+
+The OpenHIE framework supports interoperability by creating a reusable architectural framework that introduces a service oriented approach, maximally leveraging health information standards, enabling flexible implementation by country partners, and supporting interchangeability of individual components.
+
+OpenCRVS architecture follows this framework by being service oriented, modular, scalable and fully configurable to any country context using the OpenHIE reference middleware OpenHIM, a FHIR standardised interoperability system.
+
+## Interoperability via OpenHIM and FHIR
+
+If you are aware of FHIR then you may know it was created by Health Level Seven International (HL7) a not-for-profit, ANSI-accredited standards developing organization dedicated to providing a comprehensive framework and related standards for the exchange, integration, sharing and retrieval of electronic health information that supports clinical practice and the management, delivery and evaluation of health services.
+
+By using FHIR as a database and interoperability standard, OpenCRVS seamlessly connects civil registration to health services. We can receive birth and death notifications from the hospital setting and expose registration events to any other technical system, such as vital statistics databases, or any E services such as National ID, via our FHIR standard API gateways in OpenHIM. OpenHIM can convert in real-time any data format to and from FHIR and we have an example of this integration into DHIS2 and National ID in operation in Bangladesh.
+
+## Scalability
+
+OpenCRVS is vertically scalable and our pilot is live in Bangladesh a country with a huge population. It can be distributedly deployed on public or private cloud servers across multiple nodes, or installed in a small data centre and easily managed and maintained by a very small team.
+
+## Configuration
+
+It is easy to configure and localise using a number of config text files in a resources package.
+
+## Security
+
+OpenCRVS uses OAuth 2-Factor authentication in single sign-on across the product and can plugin to ISO 27001 information security standard organisations.
+
+User roles and access controls are managed in order to segregate personally identifiable data to only to the users who need it. These configurations can be managed in the admin system thus protecting citizen rights.
+
+All OpenCRVS data is encrypted in transit and at rest and includes daily, automated external back up as an option. Our system has been security tested to UK government standards by an independent CREST certified organisation.

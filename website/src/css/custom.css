@@ -30,6 +30,18 @@
   height: 20px;
 }
 
+.navbar__toggle:hover {
+  background: none !important;
+}
+
+.navbar__brand:hover {
+  background: none !important;
+}
+
+.navbar__logo:hover {
+  background: none !important;
+}
+
 /*.navbar__inner {
   max-width: 1140px;
   margin: 0 auto;
@@ -57,6 +69,18 @@
 .navbar__link--active {
   color: #ffffff;
   text-decoration: underline;
+}
+
+.navbar__item:hover {
+  background: none !important;
+}
+
+.navbar__link:hover {
+  background: none !important;
+}
+
+.hash-link {
+  display: none;
 }
 
 /*.main-wrapper {
@@ -101,6 +125,21 @@
   .menu__link {
   /*font-size: 14px;*/
   font-family: "noto_sans_regular";
+}
+
+.menu__link--active:not(.menu__link--sublist) {
+  background: none !important;
+}
+
+.menu_node_modules-\@docusaurus-theme-classic-src-theme-DocSidebar-
+  .menu__link:hover {
+  /*font-size: 14px;*/
+  background: none !important;
+}
+
+.sidebar_1kLs .menu__link:hover {
+  /* font-size: 14px;*/
+  background: none !important;
 }
 
 /*.docTitle_1vWb {
@@ -1883,14 +1922,19 @@ input::placeholder {
 }
 
 .productShowcaseSection.paddingBottom {
-  padding-bottom: 80px;
+  padding-bottom: 88px;
+}
+
+.productShowcaseSection.visionPaddingBottom {
+  padding-bottom: 56px;
+  border-bottom: 1px solid #dadedf;
 }
 
 .productShowcaseSection h2 {
   color: $primaryColor;
-  font-size: 30px;
+  font-size: 32px;
   line-height: 1em;
-  margin-top: 20px;
+  margin-top: 18px;
   padding: 10px 0;
   text-align: center;
 }
@@ -2254,11 +2298,12 @@ h3 {
   font-weight: 600;
   font-size: 18px;
   line-height: 27px;
-  padding: 14px 16px;
+  padding: 12px 19px;
   text-decoration: none !important;
   text-transform: none !important;
   transition: background 0.3s, color 0.3s;
   transition: border 0.3s, color 0.3s;
+  height: 55px;
 }
 
 .homeContainer .homeWrapper .inner .promoSection .button:hover {
@@ -2273,7 +2318,7 @@ h3 {
 
 .openCrvsApp {
   max-width: 1140px;
-  margin-bottom: -249px;
+  margin: 0px auto -279px auto;
 }
 
 .openCrvsApp img {
@@ -2297,7 +2342,7 @@ h3 {
 
 .visionHeader {
   color: #35495d !important;
-  max-width: 850px;
+  max-width: 900px;
   margin: -10px auto 0 auto !important;
   text-align: center;
   line-height: 150% !important;
@@ -2316,7 +2361,7 @@ h3 {
 
 .iconHeader div {
   position: relative;
-  top: 45px;
+  top: 8px;
   padding-right: 10px;
 }
 
@@ -2325,6 +2370,10 @@ h3 {
   margin: 0 auto;
   padding-top: 20px;
   padding-bottom: 20px;
+}
+
+.firstProcessBlock {
+  margin-top: 22px;
 }
 
 .processImage {
@@ -2336,6 +2385,7 @@ h3 {
   position: relative;
   top: 45px;
   height: 200px;
+  margin-bottom: 50px;
 }
 
 .processContent p {
@@ -2745,10 +2795,22 @@ h3 {
   padding-top: 30px;
 }
 
+.wrapperTitle h2 {
+  margin-bottom: 30px;
+}
+
+.wrapperParagraph {
+  margin-top: -34px !important;
+}
+
 .bullets {
   font-family: "noto_sans_regular";
   font-style: normal;
   font-weight: normal;
   font-size: 16px;
   line-height: 24px;
+}
+
+.communityBlock {
+  margin-top: 40px;
 }

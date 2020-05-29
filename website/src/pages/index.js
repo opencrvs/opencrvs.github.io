@@ -2,6 +2,7 @@ import React from "react";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import Layout from "@theme/Layout";
+import "./index.css";
 
 function Home() {
   const context = useDocusaurusContext();
@@ -42,7 +43,7 @@ function Home() {
 
   const OpenCRVSVision = () => {
     return (
-      <div className="productShowcaseSection paddingBottom">
+      <div className="productShowcaseSection visionPaddingBottom">
         <div className="openCrvsApp">
           <img
             src={useBaseUrl("img/openCrvsApp@2x.png")}
@@ -129,12 +130,12 @@ function Home() {
     <div className="productShowcaseSection container paddingBottom processSection">
       <div className="wrapper wrapperTitle">
         <h2>OpenCRVS process</h2>
-        <p>
+        <p className="wrapperParagraph">
           While every country is unique, OpenCRVS supports key elements of a
           standardised process that reflects best practice and drives
           efficiency.
         </p>
-        <div className="gridBlock processBlock">
+        <div className="gridBlock processBlock firstProcessBlock">
           <div className="blockElement twoByGridBlock">
             <div className="blockContent processContent">
               <div className="iconHeader">
@@ -169,7 +170,10 @@ function Home() {
               </p>
               <ul className="bullets">
                 <li>
-                  <a href="#">Digital health systems</a> e.g. DHIS2 or OpenSRP
+                  <a href={useBaseUrl("docs/system_overview/interoperability")}>
+                    Digital health systems
+                  </a>{" "}
+                  e.g. DHIS2 or OpenSRP
                 </li>
                 <li>
                   Messaging apps e.g. SMS, USSD, Whatsapp etc.
@@ -433,7 +437,7 @@ function Home() {
   const LowResource = () => (
     <div className="productShowcaseSection container paddingBottom">
       <div className="wrapper wrapperTitle lowResourceWrapper">
-        <h2>Developed to work in low resource settings</h2>
+        <h2>Developed to work in any setting</h2>
         <div className="gridBlock ">
           <div className="blockElement threeByGridBlock">
             <div className="blockContent">
@@ -443,7 +447,7 @@ function Home() {
                   alt="Outbox"
                 />
               </div>
-              <h3>Offline &amp; low connectivity working</h3>
+              <h4>Offline &amp; low connectivity working</h4>
               <p>Complete applications offline and send when you reconnect. </p>
               <a
                 className="homeLink homeLinkNoBullets"
@@ -462,7 +466,7 @@ function Home() {
                   alt="De-duplication"
                 />
               </div>
-              <h3>Real-time depuplication</h3>
+              <h4>Real-time depuplication</h4>
               <p>
                 Increase data quality by identifying potential duplicate
                 applications with the OpenCRVS deduplication engine.{" "}
@@ -484,7 +488,7 @@ function Home() {
                   alt="Outbox"
                 />
               </div>
-              <h3>Multi-language</h3>
+              <h4>Multi-language</h4>
               <p>
                 Users can easily change the language which they use to make the
                 experience as local as possible.{" "}
@@ -506,7 +510,7 @@ function Home() {
     <div className="productShowcaseSection container paddingBottom processSection">
       <div className="wrapper wrapperTitle">
         <h2>Functional Architecture</h2>
-        <p>
+        <p className="wrapperParagraph">
           The OpenCRVS system supports common CRVS workflows and functions as
           well as a number of functions that will help you realise the true
           value of civil registration.
@@ -527,11 +531,11 @@ function Home() {
     <div className="productShowcaseSection container noBorder processSection">
       <div className="wrapper wrapperTitle">
         <h2>Join our community</h2>
-        <p>
+        <p className="wrapperParagraph">
           As we design and develop OpenCRVS, we make a commitment to the
           following values.{" "}
         </p>
-        <div className="gridBlock">
+        <div className="gridBlock communityBlock">
           <div className="blockElement threeByGridBlock">
             <div className="blockContent">
               <h4>We are open</h4>
@@ -564,7 +568,7 @@ function Home() {
           </div>
         </div>
 
-        <div className="gridBlock">
+        <div className="gridBlock communityBlock">
           <div className="blockElement threeByGridBlock">
             <div className="blockContent">
               <h4>We are future focused</h4>

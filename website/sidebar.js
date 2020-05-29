@@ -7,17 +7,15 @@ module.exports = {
       "system_overview/interoperability",
       "system_overview/configuration",
       "system_overview/siteMap",
-      {
-        "User types": [
-          "system_overview/user_types/overviewUserTypes",
-          "system_overview/user_types/fieldAgents",
-          "system_overview/user_types/registrationAgent",
-          "system_overview/user_types/registrationAgentDelAuth",
-          "system_overview/user_types/registrar",
-          "system_overview/user_types/registrationManager",
-          "system_overview/user_types/sysAdmin",
-        ],
-      },
+    ],
+    "User types": [
+      "system_overview/user_types/overviewUserTypes",
+      "system_overview/user_types/fieldAgents",
+      "system_overview/user_types/registrationAgent",
+      "system_overview/user_types/registrationAgentDelAuth",
+      "system_overview/user_types/registrar",
+      "system_overview/user_types/registrationManager",
+      "system_overview/user_types/sysAdmin",
     ],
     "Core functions": [
       "core_functions/notifyAVitalEvent",
@@ -44,6 +42,7 @@ module.exports = {
       "system_admin/commsManagement",
       "system_admin/configManagement",
     ],
+    Technology: ["technology/technologyIntroduction"],
   },
   community: {
     Community: [
