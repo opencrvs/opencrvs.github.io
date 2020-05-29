@@ -3,8 +3,6 @@ id: contributing
 title: Contributing
 ---
 
-## Our development process
-
 OpenCRVS uses [GitHub](https://github.com/opencrvs/opencrvs-core) as its source of truth. The core team will be working directly there. All changes will be public from the beginning.
 
 ### Reporting new issues
