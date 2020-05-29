@@ -1,6 +1,6 @@
 ---
 id: registrationAgentDelAuth
-title: Registration Agent with delegated authority
+title: Registration agent with delegated authority
 ---
 
 This user type extends the Registration Agents permissions, as detailed above, to allow the Registration agent to (i) register vital events and (ii) issue a certificate with the digital signature of the Registrar, with the authority delegated by the Registrar themselves.

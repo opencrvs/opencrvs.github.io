@@ -2,6 +2,7 @@ module.exports = {
   docs: {
     "System overview": [
       "system_overview/introduction",
+      "system_overview/designPrinciples",
       "system_overview/functionalArchitecture",
       "system_overview/keyFeatures",
       "system_overview/interoperability",

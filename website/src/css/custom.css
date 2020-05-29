@@ -21,6 +21,10 @@
   --ifm-navbar-link-color: #ffffff;
 }
 
+.docTitle_1vWb {
+  font-size: 42px;
+}
+
 .navbar__items a:hover {
   color: #ffffff;
   background: #5e93ed;
