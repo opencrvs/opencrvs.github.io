@@ -27,30 +27,30 @@ The below SMSs are currently sent at different steps in the process to keep Appl
 
 ### 1. New user
 
-| Key | Description                                   | English copy                                                                                    | Benagli copy | Explorations | Description 1 |
-| --- | --------------------------------------------- | ----------------------------------------------------------------------------------------------- | ------------ | ------------ | ------------- |
-|     | This is sent when an admin creates a new user | You can login to OpenCRVS with this temporary username: {{username}} and password: {{password}} |              |              |               |
+| Key | Description                                   | English copy                                                                                    |
+| --- | --------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+|     | This is sent when an admin creates a new user | You can login to OpenCRVS with this temporary username: {{username}} and password: {{password}} |
 
 ### 2. Birth & death declaration
 
-| Key | Description                                                        | English copy                                                                                                                   | Benagli copy | Explorations | Description 1 |
-| --- | ------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ | ------------ | ------------ | ------------- |
-|     | This is sent when a field agent has sent an application for review | Birth registration tracking ID for {{name}} is {{trackingid}}. You will get an SMS within 2 days with progress and next steps. |              |              |               |
-|     |                                                                    | Death registration tracking ID for {{name}} is {{trackingid}}. You will get an SMS within 2 days with progress and next steps. |              |              |               |
+| Key | Description                                                        | English copy                                                                                                                   |
+| --- | ------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ |
+|     | This is sent when a field agent has sent an application for review | Birth registration tracking ID for {{name}} is {{trackingid}}. You will get an SMS within 2 days with progress and next steps. |
+|     |                                                                    | Death registration tracking ID for {{name}} is {{trackingid}}. You will get an SMS within 2 days with progress and next steps. |
 
 ### 3. Birth & death registration
 
-| Key   | Description                                                         | English copy                                                                                                                                                                                            | Benagli copy | Explorations | Description 1 |
-| ----- | ------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | ------------ | ------------- |
-| Birth | This is sent when a reg agent or registrar registers an application | Congratulations, the birth of {{name}} has been registered. The BRN is [201937484839384]. Visit your local registration office with your ID to collect the certificate. Your tracking ID is [BNFA323S]. |              |              |               |
-| Death |                                                                     | The death of {{name}} has been registered. The DRN is [201937484839384]. Visit your local registration office with your ID to collect the certificate. Your tracking ID is [BNFA323S].                  |              |              |               |
+| Key   | Description                                                         | English copy                                                                                                                                                                                            |
+| ----- | ------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Birth | This is sent when a reg agent or registrar registers an application | Congratulations, the birth of {{name}} has been registered. The BRN is [201937484839384]. Visit your local registration office with your ID to collect the certificate. Your tracking ID is [BNFA323S]. |
+| Death |                                                                     | The death of {{name}} has been registered. The DRN is [201937484839384]. Visit your local registration office with your ID to collect the certificate. Your tracking ID is [BNFA323S].                  |
 
 ### Birth & death rejection
 
-| Key   | Description                                                   | English copy                                                                                                                                          | Benagli copy | Explorations | Description 1 |
-| ----- | ------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | ------------ | ------------- |
-| Birth | advice? come to office, expect a phone call. speak to the HA? | Your birth application has been rejected. Please visit [Name of office] registration office with your supporting documents. Your tracking ID is [ID]. |              |              |               |
-| Death |                                                               | Your death application has been rejected. Please visit [Name of office] registration office with your supporting documents. Your tracking ID is [ID]. |              |              |               |
+| Key   | Description                                                   | English copy                                                                                                                                          |
+| ----- | ------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Birth | advice? come to office, expect a phone call. speak to the HA? | Your birth application has been rejected. Please visit [Name of office] registration office with your supporting documents. Your tracking ID is [ID]. |
+| Death |                                                               | Your death application has been rejected. Please visit [Name of office] registration office with your supporting documents. Your tracking ID is [ID]. |
 
 **Coming Soon**
 

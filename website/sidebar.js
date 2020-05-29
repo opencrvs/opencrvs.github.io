@@ -34,7 +34,7 @@ module.exports = {
       "support_functions/legacyDataImport",
       "support_functions/userSupport",
     ],
-    "System administration functions": [
+    "System admin functions": [
       "system_admin/userTeam",
       "system_admin/contentManagement",
       "system_admin/commsManagement",
