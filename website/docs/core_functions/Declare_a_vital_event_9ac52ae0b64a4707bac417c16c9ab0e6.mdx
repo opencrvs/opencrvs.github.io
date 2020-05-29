@@ -24,8 +24,6 @@ export const Video = ({ url }) => (
   </div>
 );
 
-## Overview
-
 This functionality allows different types of agent to complete and submit a vital event registration application and attach supporting documentation for registration.
 
 <Video url="https://www.loom.com/embed/6ded0fda839b4326a896722a44a73124"></Video>
@@ -33,14 +31,123 @@ This functionality allows different types of agent to complete and submit a vita
 ## Configuration
 
 The OpenCRVS product allows you to configure the form fields as per your legal requirements, however the product does recommend a number of fields to be included based on global best practice.
+Content for SMS messages can be updated based on country requirements.
 
 The form fields included in this version of the product reflect requirements from the Government of Zambia that were captured during development of the Zambian Proof of Concept.
 
-[Birth registration application](birthRegistrationApplication)
+<details>
+  <summary>Birth registration application</summary>
 
-[Death registration application](deathRegistrationApplication)
+### Child's details
 
-Content for SMS messages can be updated based on country requirements.
+| Field Name              | Options                                                                                                     | Reason for Capturing                                                                                                                                                     |
+| ----------------------- | ----------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| First name(s)           |                                                                                                             | Legal name                                                                                                                                                               |
+| Last name               |                                                                                                             | Legal name                                                                                                                                                               |
+| Sex                     | Male, Female, Third Gender, Not Known                                                                       | Understand the gender breakdown of births                                                                                                                                |
+| Date of birth           |                                                                                                             | Understand when people are being born and establish legal age of child                                                                                                   |
+| Attendant at birth      | Physician, Nurse, Midwife, Other paramedical personnel, Layperson, Traditional Birth Attendant, None, Other | Lends to an understanding of behaviours around pregnancy and birth as well as access to sexual and reproductive health services (SRHS) that the mother received at birth |
+| Order of birth (number) |                                                                                                             | Lends to an understanding of family size and associated SRHS that need to be made available                                                                              |
+| Weight at birth (kg)    |                                                                                                             | Lends to an understanding of the health of mothers and babies and what services are required to address this                                                             |
+| Place of delivery       | Health Institution, Private Home, Other                                                                     | Lends to an understanding where births are happening which can inform communications campaigns and health service planning                                               |
+
+### Mother's details
+
+| Field Name                                                     | Options                                                          | Reason for Capturing                                                                                                                       |
+| -------------------------------------------------------------- | ---------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
+| Nationality                                                    | Dropdown of all countries                                        | Can be used to inform child's claim to nationality                                                                                         |
+| National ID                                                    |                                                                  | Formally identify individual                                                                                                               |
+| Social Security No./NAPSA                                      |                                                                  | Can be used to create familial links for multiple purposes                                                                                 |
+| First name(s)                                                  |                                                                  |                                                                                                                                            |
+| Last name                                                      |                                                                  |                                                                                                                                            |
+| Date of birth                                                  |                                                                  | Lends to an understanding of the age of mothers that can inform appropriate SRHS                                                           |
+| Marital Status                                                 |                                                                  | Lends to an understanding of the prevalence of single parent families and allows for planning of related services                          |
+| Occupation                                                     |                                                                  |                                                                                                                                            |
+| Level of Education                                             |                                                                  | Statistical aggregation allows for tailoring of sexual and reproductive health information based on level of education attained by mothers |
+| What is her place of origin (heritage)?                        |                                                                  |                                                                                                                                            |
+| What is her residential address?                               |                                                                  |                                                                                                                                            |
+| Is her place of residence the same as her residential address? | Yes, No. If No, user is provided with new address field template |                                                                                                                                            |
+
+### Father's details
+
+| Field Name                                                   | Options                                                          | Reason for Capturing                                                                                                                       |
+| ------------------------------------------------------------ | ---------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
+| Do you have the Father's details?                            | Yes, No                                                          | To ensure that an application can be submitted without the Father's details, protecting the rights of the child                            |
+| Nationality                                                  | Dropdown of all countries                                        | Can be used to inform child's claim to nationality                                                                                         |
+| National ID                                                  |                                                                  | Formally identify individual                                                                                                               |
+| Social Security No./NAPSA                                    |                                                                  | Can be used to create familial links for multiple purposes                                                                                 |
+| First name(s)                                                |                                                                  |                                                                                                                                            |
+| Last name                                                    |                                                                  |                                                                                                                                            |
+| Date of birth                                                |                                                                  | Lends to an understanding of the age of fathers that can inform appropriate services and communications                                    |
+| Marital Status                                               |                                                                  | Lends to an understanding of the prevalence of single parent families and allows for planning of related services                          |
+| Occupation                                                   |                                                                  |                                                                                                                                            |
+| Level of Education                                           |                                                                  | Statistical aggregation allows for tailoring of sexual and reproductive health information based on level of education attained by mothers |
+| His his place of origin (heritage) the same as the mother's? |                                                                  |                                                                                                                                            |
+| Is his residential address the same as his mother's?         | Yes, No. If No, user is provided with new address field template |                                                                                                                                            |
+
+</details>
+
+<details>
+  <summary>Death registration application</summary>
+
+### Deceased's details
+
+| Field Name                          | Options                                                                                                                                                         | Reason for Capturing                                                               |
+| ----------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| National ID                         |                                                                                                                                                                 | Formally identify individual                                                       |
+| Social security no./NAPSA           |                                                                                                                                                                 | Trigger the provision or ending of appropriate services                            |
+| Nationality                         | All countries                                                                                                                                                   |                                                                                    |
+| First Name(s)                       |                                                                                                                                                                 | Legal name                                                                         |
+| Last name                           |                                                                                                                                                                 | Legal name                                                                         |
+| Date of birth                       |                                                                                                                                                                 | Understand age of the deceased to inform death statistics                          |
+| Sex                                 | Male, Female, Other, Unknown                                                                                                                                    | Understand sex of deceased to inform death statistics                              |
+| Marital Status                      |                                                                                                                                                                 | Understand familial links and dependents for inheritance purposes                  |
+| Occupation                          |                                                                                                                                                                 |                                                                                    |
+| What was their residential address? | Country (default Zambia), Province, District, Urban address OR Rural address, Urban: Town Residential Area, Street / Plot Number, Number, Rural: Chief, Village | Understand where deaths are happening and identify patterns related to geographies |
+
+### Death details
+
+| Field Name                                                 | Options                                                                | Reason for Capturing                                                                                |
+| ---------------------------------------------------------- | ---------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
+| When did the death occur?                                  | Enter the date as: day, month, year e.g. 24 10 2020                    | Understand when deaths are occurring to inform analysis based on identified patterns                |
+| What was the manner of death?                              | Natural causes, Accident, Suicide, Homicide, Manner undetermined       | Understand how deaths are occurring to inform analysis based on identified patterns                 |
+| Where did the death occur?                                 | Residential address of the deceased; Health Institution; Other address | Understand where deaths are occurring to inform appropriate service provision                       |
+| Has a Medically Certified Cause of Death been established? | Yes, No                                                                |                                                                                                     |
+| If YES: What is the medically certified cause of death?    | Underlying cause of death                                              | Inform root cause analysis and appropriate service provision to address preventable causes of death |
+
+### Applicant's details
+
+| Field Name                         | Options                                                                                                                                                         | Reason for Capturing         |
+| ---------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------- |
+| Nationality                        | Default - Zambia Dropdown of all countries                                                                                                                      |                              |
+| National ID                        |                                                                                                                                                                 | Formally identify individual |
+| First name(s)                      |                                                                                                                                                                 |                              |
+| Last name                          |                                                                                                                                                                 |                              |
+| What is their residential address? | Country (default Zambia), Province, District, Urban address OR Rural address, Urban: Town Residential Area, Street / Plot Number, Number, Rural: Chief, Village |                              |
+
+### Father's details
+
+| Field Name    | Options | Reason for Capturing |
+| ------------- | ------- | -------------------- |
+| First Name(s) |         |                      |
+| Last Name     |         |                      |
+
+### Mother's details
+
+| Field Name    | Options | Reason for Capturing |
+| ------------- | ------- | -------------------- |
+| First Name(s) |         |                      |
+| Last Name     |         |                      |
+
+### Attaching supporting documents
+
+| Field Name                 | Options                                                                                                                                                                                                                                         | Reason for Capturing |
+| -------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------- |
+| Proof of deceased's ID     | National ID (front) National ID (back) Birth registration certificate Passport                                                                                                                                                                  | Legal requirement    |
+| Proof of applicant's ID    | National ID (front) National ID (back) Birth registration certificate Passport                                                                                                                                                                  | Legal requirement    |
+| Proof of death of deceased | Police brought in dead certificate Certified post mortem report Hospital discharge certificate Attested letter of death Attested certificate of death Certified copy of burial receipt Certified copy of funeral receipt Coroner's report Other | Legal requirement    |
+
+</details>
 
 ## User Stories
 

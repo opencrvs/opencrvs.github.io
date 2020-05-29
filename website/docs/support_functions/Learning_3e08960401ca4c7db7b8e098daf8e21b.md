@@ -3,17 +3,15 @@ id: learning
 title: Learning
 ---
 
-# Overview
-
 This functionality allows training to be provided through the product, minimising the need for in-person training and providing flexibility to training approaches and the release of new features.
 
 ## Configuration
 
 Generic training content in common languages will be available as standard. Additional modules based on country-configurations and non-standard languages can be configured.
 
-# Functionality
+## Functionality
 
-## _Coming Soon_
+**Coming Soon**
 
 ## User Stories
 

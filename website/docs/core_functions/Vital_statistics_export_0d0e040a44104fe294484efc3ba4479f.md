@@ -15,12 +15,12 @@ As a **member of the NSO**, I want to be able to export a vital statistics extra
 
 As a **member of the NSO**, I want to be able to select the parameters of data that I want for analysis, so that I can see the data that is of use for me.
 
-# Functionality
+## Functionality
 
 ### Export report
 
 Any user with access to reports can download a CSV file of the reports that have been defined for that country. The registration authority should work with the vital statistics agency to agree on the content of these reports.
 
-## _Coming Soon_
+**Coming Soon**
 
 The user can change the parameters of the reports before exporting it.

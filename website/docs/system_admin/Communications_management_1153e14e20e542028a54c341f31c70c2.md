@@ -19,7 +19,7 @@ As a **System Administrator/Registration Manager**, I want to be able to send ou
 
 As a **System Administrator/Registration Manager**, I want to be able to edit the content of application notifications for end-users, so that the correct message gets to them. **[IN ROADMAP]**
 
-# Functionality
+## Functionality
 
 ## SMS Content
 
@@ -52,7 +52,7 @@ The below SMSs are currently sent at different steps in the process to keep Appl
 | Birth | advice? come to office, expect a phone call. speak to the HA? | Your birth application has been rejected. Please visit [Name of office] registration office with your supporting documents. Your tracking ID is [ID]. |              |              |               |
 | Death |                                                               | Your death application has been rejected. Please visit [Name of office] registration office with your supporting documents. Your tracking ID is [ID]. |              |              |               |
 
-## _Coming Soon_
+**Coming Soon**
 
 ### Mass SMS broadcast
 

@@ -18,9 +18,9 @@ As someone who needs to investigate a record:
 - I want to be able to easily see the profile of the user who conducted each action, including their office and contact number so I can get in touch with them
 - I want to be able to easily navigate to the user profile and disable their account if they have been conducting activities that are inappropriate
 
-# Functionality
+## Functionality
 
-## _Coming Soon_
+**Coming Soon**
 
 ### Audit User
 

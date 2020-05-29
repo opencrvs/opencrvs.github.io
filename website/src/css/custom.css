@@ -2814,3 +2814,7 @@ h3 {
 .communityBlock {
   margin-top: 40px;
 }
+
+summary {
+  outline: none;
+}

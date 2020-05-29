@@ -3,8 +3,6 @@ id: legacyDataImport
 title: Legacy data import
 ---
 
-# Overview
-
 This functionality supports the digitisation of paper records for future use.
 
 ## Configuration
@@ -13,7 +11,7 @@ The form fields captured during this digitisation process can be defined by the 
 
 # Functionality
 
-## _Coming Soon_
+**Coming Soon**
 
 ## User Stories
 

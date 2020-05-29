@@ -20,8 +20,6 @@ module.exports = {
     "Core functions": [
       "core_functions/notifyAVitalEvent",
       "core_functions/declareAVitalEvent",
-      "core_functions/birthRegistrationApplication",
-      "core_functions/deathRegistrationApplication",
       "core_functions/validateRegisterVitalEvent",
       "core_functions/issueACertificate",
       "core_functions/vitalStatisticsExport",
