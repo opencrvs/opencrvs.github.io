@@ -22,7 +22,7 @@ The technical architecture of OpenCRVS was designed to conform to the [OpenHIE](
   src={useBaseUrl("assets/technology/ArchDiagram2x.png")}
 />
 
-The Open Health Information Exchange (OpenHIE) initiative is a global, mission-driven community of practice. Dedicated to improving the health of the underserved through open and collaborative development & interoperable data standards
+The Open Health Information Exchange (OpenHIE) initiative is a global, mission-driven community of practice. Dedicated to improving the health of the underserved through open and collaborative development & interoperable data standards.
 
 The OpenHIE framework supports interoperability by creating a reusable architectural framework that introduces a service oriented approach, maximally leveraging health information standards, enabling flexible implementation by country partners, and supporting interchangeability of individual components.
 
@@ -31,7 +31,7 @@ OpenCRVS architecture follows the OpenHIE framework by:
 - Utilising the OpenHIE reference interoperability middleware: [OpenHIM](http://openhim.org/).
 - Being constructed using modular, interchangeable, event-driven microservices for business functions and by utilising [FHIR](https://hl7.org/FHIR/) in a NoSQL MongoDB datastore: [Hearth](https://github.com/jembi/hearth).
 - Providing scalablility via a [one Docker container per microservice](https://cloud.google.com/solutions/best-practices-for-building-containers) model and [Docker Swarm](https://docs.docker.com/engine/swarm/).
-- Being fully configurable using simple text files.
+- Being fully [configurable](./technicalConfiguration) using simple text files.
 
 OpenCRVS builds on these sound principles by additionally providing:
 
@@ -41,8 +41,8 @@ OpenCRVS builds on these sound principles by additionally providing:
 - A [Travis](https://travis-ci.org/) continuous integration and delivery suite containing 80%+ coverage of [Jest](https://jestjs.io/) unit tests, [Cypress](https://www.cypress.io/) end-to-end tests and integration tests.
 - A full-stack designed for the lowest possible TCO, "total cost of ownership" - built in [TypeScript](https://github.com/microsoft/TypeScript) / JavaScript (NodeJS - [HapiJS](https://github.com/hapijs/hapi) & [React](https://reactjs.org/)) - using [Progressive Web Application](https://developers.google.com/web/progressive-web-apps) technology for offline and low-connectivity access via mobile.
 - External server and application health monitoring with [Netdata](https://www.netdata.cloud/), [Papertrail](https://www.papertrail.com/), [Pingdom](https://www.pingdom.com/), [LogRocket](https://logrocket.com/) and [Sentry](https://sentry.io) configurations.
-- Automatic [LetsEncrypt](https://letsencrypt.org/) SSL configuration and microservice cloud router using [Traefik]https://containo.us/traefik/
-- Peace of mind, with the understanding that OpenCRVS has been security tested to UK government standards, by an independent [CREST](https://www.crest-approved.org/) and [CyberEssentials](https://www.ncsc.gov.uk/cyberessentials/overview) certified organisation.
+- Automatic [LetsEncrypt](https://letsencrypt.org/) SSL configuration and microservice cloud router using [Traefik](https://containo.us/traefik/)
+- Peace of mind, with the understanding that both the OpenCRVS application and OpenCRVS infrastructure has been security tested by an independent 3rd party to UK government satndards.
 
 ## Interoperability via OpenHIM and FHIR
 
@@ -50,13 +50,13 @@ You can read more about the [functional interoperability requirements](../system
 
 ## Scalability
 
-OpenCRVS is vertically scalable from the smallest to the largest nation. Our pilot is live in Bangladesh a country with a huge population. It can be distributedly deployed on public or private cloud servers across multiple nodes, or installed in a small data centre on a single node and easily managed and maintained by a very small team.
+OpenCRVS is vertically scalable from the smallest to the largest nation. Our pilot is live in Bangladesh a country with a huge population. It can be deployed on public or private cloud servers across multiple nodes, or installed in a small data centre on a single node and easily managed and maintained by a very small team.
 
 Read more about the [deployment process](./deployment).
 
 ## Configuration
 
-It is easy to configure and localise using a number of config text files in a resources package. A companion example configuration; the OpenCRVS **Resources** package for Zambia, can be found on [GitHub](https://github.com/opencrvs/opencrvs-zambia).
+It is easy to configure and localise using a number of config text files in a **resources** package. A companion example configuration; the OpenCRVS **resources** package for Zambia, can be found on [GitHub](https://github.com/opencrvs/opencrvs-zambia).
 
 You can read more about the [functional configuration requirements](../system_overview/configuration) and the technical configuration process [here](./technicalConfiguration).
 

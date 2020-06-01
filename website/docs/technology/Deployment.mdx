@@ -3,25 +3,25 @@ id: deployment
 title: Deployment
 ---
 
-Once you have configured your resources module and you have OpenCRVS running locally as you like, you are ready to provision and deploy OpenCRVS.
+Once you have configured your resources package and you have OpenCRVS running locally, you are ready to provision and deploy OpenCRVS.
 
 The [OpenCRVS Core](https://github.com/opencrvs/opencrvs-core) contains a deployment script run via `yarn` commands in [package.json](https://github.com/opencrvs/opencrvs-core/blob/master/package.json) to deploy to a staging, QA or production cluster [here](https://github.com/opencrvs/opencrvs-core/blob/master/deploy.sh).
 
-`yarn deploy:qa <Your host> <Your contauiner version - explained below> <path to your resources package>`
+`yarn deploy:qa <Your host> <Dockerhub hash for your OpenCRVS version, git hash or "latest"> <path to your resources package>`
 
-OpenCRVS should be deployed on a minimum cluster of 3 nodes, each with the following minimm specification:
+OpenCRVS should be deployed on a minimum cluster of 3 nodes, each with the following specifications:
 
-#### 8 GB Memory (preferrably 16 GB) / 160 GB Disk / Ubuntu 18.04.3 (LTS) x64
+#### 8 GB Memory (preferably 16 GB) / 160 GB Disk / Ubuntu 18.04.3 (LTS) x64
 
 ## How can I install and manage an OpenCRVS server cluster of nodes?
 
 An [Ansible](https://www.ansible.com/) playbook script is provided [here](https://github.com/opencrvs/opencrvs-core/blob/master/infrastructure/server-setup/playbook.yml) to automate the vast majority of your server cluster setup.
 
-To prepare your server cluster, some pre-requisites and instructions are documented [here](https://github.com/opencrvs/opencrvs-core/tree/master/infrastructure/server-setup)
+To prepare your server cluster, some pre-requisites and instructions are documented [here](https://github.com/opencrvs/opencrvs-core/tree/master/infrastructure/server-setup).
 
 ## How can I set up continuous integration and delivery?
 
-We provide an example [Travis](https://travis-ci.org/) [configuration](https://github.com/opencrvs/opencrvs-core/blob/master/.travis.yml) to automate unit and end-to-end testing integration & deployment.
+We provide an example [Travis](https://travis-ci.org/) [configuration](https://github.com/opencrvs/opencrvs-core/blob/master/.travis.yml) to automate unit testing, end-to-end testing, Docker compose / push to Dockerhub and deployment to a staging environment.
 
 ## Why Docker Swarm? ...and is there Kubernetes support?
 
@@ -29,7 +29,7 @@ We provide an example [Travis](https://travis-ci.org/) [configuration](https://g
 
 Some nations may be located far from a developed world datacentre. Many nations may not be able to legally support international data storage of citizen data. Often getting the legal approval requires regulatory change which obviously can take some time. In the short term, these nations may not have access to the development skills necessary to manage a complicated distributed cloud deployment, so ease-of-use is paramount.
 
-Docker Swarm makes it easy to commence service distribution privately and then migrate publically when an organisation is ready to do so. Docker Swarm automatically configures a "round robin" load balanced cluster, and provides Service Discovery out-the-box.
+Docker Swarm makes it easy to commence service distribution privately and then migrate publicly when an organisation is ready to do so. Docker Swarm automatically configures a "round robin" load balanced cluster, and provides Service Discovery out-the-box.
 
 ## How do I build my containers and push a version to Dockerhub?
 
@@ -39,7 +39,7 @@ The `yarn compose:push:version` script will version and push your containers.
 
 ## How do I manage a Docker Swarm?
 
-A number of other useful Docker commands you will need in order to manage the swarm cluster are accessible [here](https://github.com/opencrvs/opencrvs-core/tree/master/infrastructure/server-setup)
+A number of other useful Docker commands you will need in order to manage the swarm cluster are accessible [here](https://github.com/opencrvs/opencrvs-core/tree/master/infrastructure/server-setup).
 
 **Coming soon**
 
