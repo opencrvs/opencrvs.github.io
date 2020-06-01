@@ -25,27 +25,27 @@ As a **System Administrator/Registration Manager**, I want to be able to edit th
 
 The below SMSs are currently sent at different steps in the process to keep Applicants updated on the status of their application.
 
-### 1. New user
+**1. New user**
 
 | Key | Description                                   | English copy                                                                                    |
 | --- | --------------------------------------------- | ----------------------------------------------------------------------------------------------- |
 |     | This is sent when an admin creates a new user | You can login to OpenCRVS with this temporary username: {{username}} and password: {{password}} |
 
-### 2. Birth & death declaration
+**2. Birth & death declaration**
 
 | Key | Description                                                        | English copy                                                                                                                   |
 | --- | ------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ |
 |     | This is sent when a field agent has sent an application for review | Birth registration tracking ID for {{name}} is {{trackingid}}. You will get an SMS within 2 days with progress and next steps. |
 |     |                                                                    | Death registration tracking ID for {{name}} is {{trackingid}}. You will get an SMS within 2 days with progress and next steps. |
 
-### 3. Birth & death registration
+**3. Birth & death registration**
 
 | Key   | Description                                                         | English copy                                                                                                                                                                                            |
 | ----- | ------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Birth | This is sent when a reg agent or registrar registers an application | Congratulations, the birth of {{name}} has been registered. The BRN is [201937484839384]. Visit your local registration office with your ID to collect the certificate. Your tracking ID is [BNFA323S]. |
 | Death |                                                                     | The death of {{name}} has been registered. The DRN is [201937484839384]. Visit your local registration office with your ID to collect the certificate. Your tracking ID is [BNFA323S].                  |
 
-### Birth & death rejection
+**Birth & death rejection**
 
 | Key   | Description                                                   | English copy                                                                                                                                          |
 | ----- | ------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
