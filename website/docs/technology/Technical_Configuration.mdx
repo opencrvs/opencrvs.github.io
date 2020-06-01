@@ -1,0 +1,84 @@
+---
+id: technicalConfiguration
+title: Technical Configuration
+---
+
+In order to implement OpenCRVS in your country, you will want OpenCRVS to reflect your civil registration legal requirements.
+
+You will want to do things like configure OpenCRVS forms, upload office and employee details, and ensure that the administrative structure for address format is accurate for your country. You will want to localise OpenCRVS into various languages, and prepare your certificates.
+
+These kind of configuration data requirements are often referred to as [reference data](https://en.wikipedia.org/wiki/Reference_data).
+
+The features in the **Resources** package are designed to import and convert your reference data into the [FHIR](https://hl7.org/FHIR/) standard, then power APIs or populate the OpenCRVS [Hearth](https://github.com/jembi/hearth) NoSQL database, via the OpenCRVS [OpenHIM](http://openhim.org/) interoperability layer.
+
+Some governments, may have a central repository for some reference data, accessible via APIs.
+
+Other governments may supply reference data in a spreadsheet format that this package can import and convert.
+
+What this package provides, is an example approach, and scripts showing how this data can be imported and how [interoperability](./technicalInteroperability) with such APIs can be achieved.
+
+Zambia is used as an OpenSource example and Bangladesh implementation (including multiple API integrations into DHIS2 and National ID) can be partially released on request.
+
+By following the examples in the features of the **Resources** package you can see how you can customise OpenCRVS for your requirements.
+
+## Preparing for configuration
+
+To understand the pre-requisites, see [Configuration](../system_overview/configuration).
+
+Some other additional requirements that will speed up a proof-of-concept include:
+
+- Liaise with your National Bureau of Statistics and ensure that you have a full administrative breakdown of your country in Excel.
+- Export an excel sheet of all your civil registration offices and make sure there is an id code that locates each one to an administrative level that aligns with the National Bureau of Statistics
+- Undersatand your legal requirements for civil registration and the form / certificate configurations that you will need to make.
+- Ensure that you have API access to any systems that you must [interoperate](./technicalInteroperability) with.
+- Prepare for localisation by making sure that you have translators available if you need them.
+
+## What is the resources package?
+
+It is a country configuration package for the OpenCRVS core. OpenCRVS requires a country configuration in order to run. The resources package supplies OpenCRVS with the following:
+
+- Default, factory settings database backup zips containing development users, facilities and administrative locations for the nation saved as FHIR resources.
+
+- Birth and Death registration form configuration as JSON
+
+- Birth and Death certificate PDF templates as JSON
+
+- Standardised, internationalised text as JSON - Compatible with [CrowdIn](https://crowdin.com/)
+
+- SMS gateway provider selection between [Clickatell](https://www.clickatell.com/), [Infobip](https://www.infobip.com/), or even [WhatsApp](https://www.whatsapp.com/business/api) via Twilio(https://www.twilio.com/)
+
+- Country specific environment variables in Docker compose files
+
+- Country specific client config variables in .js files for development, QA and production.
+
+- Logo for the Civil Registrar department that appears on the certificates and on the review page of the UI
+
+- Any 3rd party API [interoperability integrations](./technicalInteroperability) you require into your OpenCRVS core
+
+## What configurable features does the resources package provide?
+
+- Administrative division import: _(Administrative division data. A portion of a country delineated for the purpose of administration, allowing registrations to be coupled to locations.)_ The administrative divisions are saved into OpenCRVS as [FHIR Locations](https://www.hl7.org/fhir/location.html). You can attach GeoJSON map data to each location, to potentially generate an interactive map of the country, and historical statistical information such as crude birth rates and estimated population rates disagregated by gender, allowing OpenCRVS the ability to calculate detailed performance reports.)
+
+- Static assets: Country specific image assets for customisation of OpenCRVS. USually the national civil registration logo
+
+- Form definitions: Endpoints to configure and return the customisable form config to the client from a JSON file
+
+- Employee import: The staff required to undertake the functions of civil registration. The employees are saved into OpenCRVS as [FHIR Practitioners](https://www.hl7.org/fhir/practitioner.html)
+
+- Facilities import: The places where civil registration and vital events such as births & deaths occur. These are also saved into OpenCRVS as [FHIR Locations](https://www.hl7.org/fhir/location.html)
+
+- Generate: Methods to generate the event registration numbers to legal requirements. (Often referred to as a BRN: Birth Registration Number or DRN: Death Registration Number). Format of the number can be bespoke or default.
+
+- Languages: A JSON file to configure all the text copy used in OpenCRVS and all languages. Can easily be imported into a Content Management System such as [CrowdIn](https://crowdin.com/).
+
+- Certificate templates: A JSON file to configure the design of the birth and death certificates
+
+- External system validation: A place to optionally externally validate registration applications on-the-fly during the registration process. This can be used if a legacy system exiss and OpenCRVS is being gradually piloted alongside an existing system. Can ensure new registrations are saved to a legacy system.
+
+## Working with the resources package
+
+1. Follow the [developer commands](https://github.com/opencrvs/opencrvs-zambia#how-do-i-run-the-module-alongside-the-opencrvs-core) to run the **Resources** package alongside **OpenCRVS Core**
+
+**Coming soon**
+
+OpenCRVS will include in its admin system the capability to manage all of these resources in the future. It is planned that this functionality will be gradually released in future versions of OpenCRVS.

@@ -1,0 +1,31 @@
+---
+id: technicalInteroperability
+title: Technical Interoperability
+---
+
+By using [FHIR](https://hl7.org/FHIR/) as a standard for our NoSQL datastore [Hearth](https://github.com/jembi/hearth) and interoperability layer [OpenHIM](http://openhim.org/), OpenCRVS seamlessly connects civil registration to health services and other systems. We can receive birth and death notifications from the hospital setting and expose registration events to any other technical system, such as National ID, via our FHIR standard API gateways in OpenHIM.
+
+## Interoperability via OpenHIM and FHIR
+
+[FHIR](https://hl7.org/FHIR/) was created by [Health Level Seven International (HL7)](http://hl7.org/) a not-for-profit, ANSI-accredited standards developing organization dedicated to providing a comprehensive framework and related standards for the exchange, integration, sharing and retrieval of electronic health information that supports clinical practice and the management, delivery and evaluation of health services.
+
+[OpenHIM](http://openhim.org/) is our pass-through, publish/subscribe middleware for all civil registration process events, tracking and exposing them as [FHIR Compositions](https://www.hl7.org/fhir/composition.html), via authenticated API integrations - [OpenHIM Mediators](https://openhim.readthedocs.io/en/latest/user-guide/mediators.html).
+
+## Example integrations
+
+[OpenHIM Mediators](https://openhim.readthedocs.io/en/latest/user-guide/mediators.html) can be built in any technology due to being containerised microservices, and can convert in real-time, any data format to and from FHIR and we have an example of these integrations into [DHIS2](https://www.dhis2.org/) and National ID in operation in Bangladesh.
+
+A simple mediator exposing the age of a child to a 3rd party application, (in this case a Telegram / WhatsApp [chatbot](https://github.com/opencrvs/opencrvs-zambia/tree/master/src/zmb/chatbot) used to verify if a child is old enough to be married) is available [here](https://github.com/opencrvs/opencrvs-zambia/tree/master/src/zmb/mediators/ocrvs-chatbot).
+
+You can read more about the functional interoperability requirements [here](../system_overview/interoperability)
+
+**Coming August 2020**
+
+OpenCRVS will be publishing documentation on this site of an integration showcasing standards-based interoperability between the civil registration function of OpenCRVS and identity management systems (both functional and foundational).
+This will include:
+
+- A technical proof of concept [OpenHIM Mediator](https://openhim.readthedocs.io/en/latest/user-guide/mediators.html) that exposes civil registration events via a Webhook.
+- A FHIR standardised integration of the Birth Registration event via this Webhook into [MOSIP - the Modular Open Source Identity Platform](https://www.mosip.io/).
+- Documentation for including biometrics to this payload using [Simprints - last mile biometric identification for universal health coverage](https://www.simprints.com/).
+
+This interoperability is very important to ensure that the legal identity established at birth is then utilised as a foundational identity to access other services (e.g. health, education, financial inclusion, passport, mobile phone etc.) and to ensure that we leave no one behind.

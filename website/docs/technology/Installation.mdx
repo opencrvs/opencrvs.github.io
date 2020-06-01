@@ -1,0 +1,36 @@
+---
+id: installation
+title: Installation
+---
+
+import useBaseUrl from "@docusaurus/useBaseUrl";
+
+This document outlines the steps a developer should take to set up a local development environment of OpenCRVS.
+
+**OpenCRVS Core** source code can be found on [GitHub](https://github.com/opencrvs/opencrvs-core).
+A companion example configuration; the OpenCRVS **Resources** package for Zambia, can be found on [GitHub](https://github.com/opencrvs/opencrvs-zambia).
+
+Both **OpenCRVS Core** and a **Resources** package are required to run OpenCRVS. When you configure OpenCRVS for your country, you will need to duplicate and make your own **Resources** package.
+
+## Preparing for installation
+
+- Read the [Introduction](./technologyIntroduction)
+- OpenCRVS uses some exciting tools. Take some time to understand the OpenSource [dependencies](https://github.com/opencrvs/opencrvs-core#what-are-the-key-opensource-dependencies-of-opencrvs).
+
+When you clone the **OpenCRVS Core** [repo](https://github.com/opencrvs/opencrvs-core), you are downloading:
+
+- All of our microservices and the mobile, progressive web application as [Lerna](https://github.com/lerna/lerna) packages.
+- [Docker compose](https://docs.docker.com/compose/) files to run a development environment and deploy OpenCRVS.
+- An Infrastructure folder, containing [Ansible](https://www.ansible.com/) setup, [OpenHIM](http://openhim.org/) [configuration](https://github.com/opencrvs/opencrvs-core/blob/master/infrastructure/openhim-base-config.json), [Netdata](https://www.netdata.cloud/) configuration, [Hearth](https://github.com/jembi/hearth) plugins, [ElasticSearch](https://www.elastic.co/) configuration, [Traefik]https://containo.us/traefik/ configuration and a number of essential scripts required to automate deployment, netweorking and backup.
+
+Now, take some time to understand the directory structure. Read more about what all the packages are for [here](https://github.com/opencrvs/opencrvs-core#what-is-inside-the-opencrvs-packages).
+
+Now you are ready to follow the step-by-step [development environment installation](https://github.com/opencrvs/opencrvs-core#ok-how-do-i-set-up-a-development-environment) instructions. At a high level you will be required to:
+
+- Install some basic dependencies for your workstation.
+- Clone the repo and install some application dependencies.
+- Run a single command to start **OpenCRVS Core** and the OpenCRVS **Resources** module in Docker on your workstation
+- Install a base configuration for OpenHIM
+- Populate your local Mongo DB with reference data and test users for the Zambia configuration.
+
+If you have any issues, we would love to know so that we can improve our documentation. Please talk to us on [Gitter](https://gitter.im/opencrvs/community#). There is a link at the foot of this page.

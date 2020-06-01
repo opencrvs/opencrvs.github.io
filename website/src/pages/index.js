@@ -19,8 +19,8 @@ function Home() {
 
   const ProjectTitle = (props) => (
     <h2 className="projectTitle">
-      OpenCRVS is a digital public good to achieve universal civil registration
-      and evidence-based decision making in low resource settings
+      OpenCRVS is a digital public good to help achieve universal civil
+      registration and evidence-based decision making in all country contexts
       <small>{props.tagline}</small>
     </h2>
   );
@@ -61,22 +61,22 @@ function Home() {
   const Features = () => (
     <div className="productShowcaseSection container paddingBottom">
       <div className="wrapper wrapperTitle">
-        <h2>A new model for civil registration</h2>
+        <h2>Enabling new models of civil registration for a digital world</h2>
         <div className="gridBlock">
           <div className="blockElement threeByGridBlock">
             <div className="blockContent">
               <h4>
                 <div>
                   <span>
-                    <p>Increases birth and death registration rates</p>
+                    <p>Active registration within the community</p>
                   </span>
                 </div>
               </h4>
               <div>
                 <span>
                   <p>
-                    Through an active registration model that takes services to
-                    where they occur in the community and health facilities.
+                    A network of registration agents bring services to where
+                    they occur in the community and health facilities.
                   </p>
                 </span>
               </div>
@@ -87,15 +87,15 @@ function Home() {
               <h4>
                 <div>
                   <span>
-                    <p>Makes civil registration easy</p>
+                    <p>Automated civil registration processing</p>
                   </span>
                 </div>
               </h4>
               <div>
                 <span>
                   <p>
-                    Through a simplified application process that puts the
-                    experience of our users first.
+                    A simplified application process minimizes workload and puts
+                    the experience of users first.
                   </p>
                 </span>
               </div>
@@ -106,16 +106,16 @@ function Home() {
               <h4>
                 <div>
                   <span>
-                    <p>Drives efficiencies for government service delivery</p>
+                    <p>Real-time operational oversight and analytics</p>
                   </span>
                 </div>
               </h4>
               <div>
                 <span>
                   <p>
-                    By working well with other e-government systems and by
-                    providing real-time operational data that supports increased
-                    accountability and performance management
+                    An integrated e-government approach and operational data
+                    visualizations drive accountability and efficiencies in
+                    government service delivery.
                   </p>
                 </span>
               </div>
@@ -129,11 +129,11 @@ function Home() {
   const Process = () => (
     <div className="productShowcaseSection container paddingBottom processSection">
       <div className="wrapper wrapperTitle">
-        <h2>OpenCRVS process</h2>
+        <h2>The registration process</h2>
         <p className="wrapperParagraph">
           While every country is unique, OpenCRVS supports key elements of a
-          standardised process that reflects best practice and drives
-          efficiency.
+          standardized civil registration process that reflects best practice
+          and drives efficiency.
         </p>
         <div className="gridBlock processBlock firstProcessBlock">
           <div className="blockElement twoByGridBlock">
@@ -437,7 +437,7 @@ function Home() {
   const LowResource = () => (
     <div className="productShowcaseSection container paddingBottom">
       <div className="wrapper wrapperTitle lowResourceWrapper">
-        <h2>Developed to work in any setting</h2>
+        <h2>Designed to work in any setting</h2>
         <div className="gridBlock ">
           <div className="blockElement threeByGridBlock">
             <div className="blockContent">
@@ -516,7 +516,7 @@ function Home() {
           value of civil registration.
         </p>
 
-        <div>
+        <div className="funcArchImageWrapper">
           <img
             className="funcArchImage"
             src="img/oCRVS_systemArchitecture_2@2x.png"
@@ -683,8 +683,8 @@ function Home() {
       <div className="mainContainer">
         <OpenCRVSVision />
         <Features />
-        <Process />
         <LowResource />
+        <Process />
         <FuncArch />
         <Community />
         <Logos />

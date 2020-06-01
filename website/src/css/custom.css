@@ -2125,6 +2125,8 @@ input::placeholder {
   color: rgba(255, 255, 255, 0.4);
   text-align: center;
   padding: 0px 16px 0px 16px;
+  max-width: 1140px;
+  margin: 0 auto;
 }
 
 .nav-footer .social {
@@ -2426,6 +2428,11 @@ h3 {
 .funcArchImage {
   padding-top: 10px;
   margin-bottom: -40px;
+}
+
+.funcArchImageWrapper {
+  padding-left: 56px;
+  padding-right: 56px;
 }
 
 .gridBlock .fiveByGridBlock img {

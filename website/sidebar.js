@@ -41,7 +41,13 @@ module.exports = {
       "system_admin/commsManagement",
       "system_admin/configManagement",
     ],
-    Technology: ["technology/technologyIntroduction"],
+    Technology: [
+      "technology/technologyIntroduction",
+      "technology/installation",
+      "technology/technicalConfiguration",
+      "technology/technicalInteroperability",
+      "technology/deployment",
+    ],
   },
   community: {
     Community: [

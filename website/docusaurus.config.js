@@ -1,5 +1,6 @@
 const siteConfig = {
-  title: "OpenCRVS Documentation", // Title for your website.
+  title:
+    "OpenCRVS is a digital public good to help achieve universal civil registration and evidence-based decision making in all country contexts", // Title for your website.
   tagline: "",
   url: "https://opencrvs.github.io/", // Your website URL
   baseUrl: "/opencrvs-core/", // Base URL for your project */
@@ -24,7 +25,7 @@ const siteConfig = {
         src: "img/logo.svg",
         href: "/",
       },
-      copyright: `Copyright © ${new Date().getFullYear()} The OpenCRVS Authors. OpenCRVS and the OpenCRVS graphic logo are (registered/a) trademark(s) of Plan International.`, // You can also put own HTML here.
+      copyright: `© All rights reserved Plan International 2020. Plan International Australia will collect your information if you choose to join our community for the sole purpose of keeping you informed of OpenCRVS updates. For more information please access Plan International Australia’s Privacy Statement.`, // You can also put own HTML here.
     },
     navbar: {
       title: "",

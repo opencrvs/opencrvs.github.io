@@ -64,6 +64,9 @@ function Footer() {
           <a href={useBaseUrl("docs/system_admin/userTeam")}>
             System admin functions
           </a>
+          <a href={useBaseUrl("docs/technology/technologyIntroduction")}>
+            Technology
+          </a>
         </div>
         <div>
           <h5>Community</h5>
