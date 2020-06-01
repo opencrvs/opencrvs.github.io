@@ -70,6 +70,7 @@ function Footer() {
         </div>
         <div>
           <h5>Community</h5>
+          <a href={useBaseUrl("docs/community/introduction")}>Community</a>
           <a href={useBaseUrl("docs/community/contributing")}>Contributing</a>
           <a href={useBaseUrl("docs/community/implementations")}>
             Implementations

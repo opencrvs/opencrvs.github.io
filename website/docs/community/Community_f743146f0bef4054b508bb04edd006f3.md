@@ -46,4 +46,4 @@ _We respect privacy as a fundamental human right._
 
 ## Interested?
 
-If you are interested in exploring how OpenCRVS can work for you, contact info@opencrvs.org for more information.
+If you are interested in exploring how OpenCRVS can work for you, contact us by joining the community at [www.opencrvs.org](https://www.opencrvs.org/)

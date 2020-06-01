@@ -2829,3 +2829,19 @@ h3 {
 summary {
   outline: none;
 }
+
+.teamImage {
+  width: 180px;
+  height: auto;
+  clip-path: circle(90px at center);
+  margin-bottom: 10px;
+}
+
+.teamImageSoph {
+  width: auto;
+  height: 180px;
+  clip-path: circle(90px at center);
+  position: relative;
+  left: -21px;
+  margin-bottom: 15px;
+}
