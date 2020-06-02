@@ -52,7 +52,9 @@ const siteConfig = {
       ],
     },
     sidebarCollapsible: true,
-    // ...
+    googleAnalytics: {
+      trackingID: "UA-158266937-1",
+    },
   },
 
   // Add custom scripts here that would be placed in <script> tags.
@@ -81,6 +83,9 @@ module.exports = {
           customCss: require.resolve("./src/css/custom.css"),
         },
         // ...
+        googleAnalytics: {
+          trackingID: "UA-158266937-1",
+        },
       },
     ],
   ],
