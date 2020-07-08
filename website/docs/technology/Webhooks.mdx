@@ -28,7 +28,7 @@ Subscribing to an OpenCRVS Webhook requires your subscribing system client to:
 1. Create an endpoint on a secure server that can process HTTPS requests.
 2. Authenticate and query OpenCRVS to find a list of available event webhooks.
 3. Authenticate and subscribe to the Webhook of choice and configure your endpoints.
-4. Develop a mediator to respond to the Webhook to request sensitive demographic or biometric details required for your system. Refer to the MOSIP [mediator](./mediator).
+4. Develop a mediator to respond to the Webhook to request sensitive demographic or biometric details required for your system. Refer to the MOSIP [mediator](./mediators).
 
 These steps are explained in detail below.
 
@@ -106,7 +106,7 @@ X-Hub-Signature: sha1={super-long-SHA1-signature}
 | `target.resourceType` | `Composition`                                      | The [FHIR resource](https://www.hl7.org/fhir/resource.html) type associated with the target of this webhook, e.g. `Composition` for a [FHIR Composition](https://www.hl7.org/fhir/composition.html). |
 | `trigger`             | `BIRTH_REGISTERED`                                 | A supported OpenCRVS event type string that triggered this webhook.                                                                                                                                  |
 
-By using the target.id and target.resourceType, a subsequent integration can be used to retrieve the details of the event as [FHIR resources](https://www.hl7.org/fhir/resource.html). Follow the [National ID integration mediator](./mediator) provided for an example use case.
+By using the target.id and target.resourceType, a subsequent integration can be used to retrieve the details of the event as [FHIR resources](https://www.hl7.org/fhir/resource.html). Follow the [National ID integration mediator](./mediators) provided for an example use case.
 
 **Validating Payloads**
 
