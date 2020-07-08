@@ -47,6 +47,8 @@ module.exports = {
       "technology/technicalConfiguration",
       "technology/technicalInteroperability",
       "technology/deployment",
+      "technology/webhooks",
+      "technology/mediators",
     ],
   },
   community: {

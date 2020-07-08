@@ -1,0 +1,266 @@
+---
+id: webhooks
+title: Webhook integration
+---
+
+import useBaseUrl from "@docusaurus/useBaseUrl";
+
+## Introduction
+
+In order to make OpenCRVS as useful and open as possible to other systems, OpenCRVS publishes the following civil registration events as Webhooks that systems can subscribe to.
+
+- **Birth registration**
+- **Death registration**
+- **Birth certified**
+- **Death certified**
+- **Birth corrected**
+- **Death corrected**
+
+Included in the webhook will be a **FHIR Resource type and uniqe ID** to the resource associated. Once a subscriber receives the event, they can query OpenCRVS for **demographics, attachments and links to biometric data** for the registration in a dedicated and secure API.
+
+Subscribing to an OpenCRVS Webhook requires your system administrator to:
+
+1. SSH into the OpenCRVS manager node and [register a new system client](./technicalInteroperability)
+2. Securely host the system `client_id`, `client_secret` and `sha_secret`, returned in the registration process, as environment variables or Docker Secrets that your subscriber service has secure access to.
+
+Subscribing to an OpenCRVS Webhook requires your subscribing system client to:
+
+1. Create an endpoint on a secure server that can process HTTPS requests.
+2. Authenticate and query OpenCRVS to find a list of available event webhooks.
+3. Authenticate and subscribe to the Webhook of choice and configure your endpoints.
+4. Develop a mediator to respond to the Webhook to request sensitive demographic or biometric details required for your system. Refer to the MOSIP [mediator](./mediator).
+
+These steps are explained in detail below.
+
+## Creating a subscriber endpoint
+
+Your endpoint must be able to process two types of HTTPS requests: **Verification Requests** and **Event Notifications**. Since both requests use HTTPs, your server must have a valid TLS or SSL certificate correctly configured and installed.
+
+The sections below explain what will be in each type of request and how to respond to them.
+
+### Verification Requests
+
+Anytime you subscribe to a Webhook, OpenCRVS will send a GET request to your endpoint URL. Verification requests include the following query string parameters, appended to the end of your endpoint URL. They will look something like this:
+
+**Sample Verification Request**
+
+```
+GET https://www.your-clever-domain-name.com/webhooks?
+  opencrvs.mode=subscribe&
+  opencrvs.challenge=1158201444&
+  opencrvs.verifyToken=abcdefghijklmnopqrstuvwxyz
+```
+
+| Parameter              | Sample value                 | Description                                                           |
+| ---------------------- | ---------------------------- | --------------------------------------------------------------------- |
+| `opencrvs.mode`        | `subscribe`                  | This value will always be set to `subscribe`                          |
+| `opencrvs.challenge`   | `1158201444`                 | An `int` you must pass back to OpenCRVS                               |
+| `opencrvs.verifyToken` | `abcdefghijklmnopqrstuvwxyz` | You will set this `string` when you complete the subscription process |
+
+**Validating Verification Requests**
+
+Whenever your endpoint receives a verification request, it must:
+
+Verify that the `opencrvs.verifyToken` value matches the string you set in the verifyToken field when you configure the Webhooks.
+Respond with the `opencrvs.challenge` value.
+
+### Event Notifications
+
+When you configure your Webhooks product, you will subscribe to specific events. Whenever there's a a new event created, we will send your endpoint a POST request with a JSON payload describing the event **FHIR Compostion ID**.
+
+For example, if you subscribed to the birth registration event, we would send you a POST request that would look something like this:
+
+```
+POST / HTTPS/1.1
+Content-Type: application/json
+X-Hub-Signature: sha1={super-long-SHA1-signature}
+
+{
+    "id": "531e9275-40e4-4ab5-a12c-6fa74d7b5b61",
+    "address": "https://www.your-clever-domain-name.com/webhooks",
+    "createdAt": "2019-12-12T10:53:43-08:00",
+    "createdBy": {
+        "client_id": "8636abe2-affb-4238-8bff-200ed3652d1e",
+        "type": "api",
+        "username": "sys.admin",
+        "name": "Euan Millar"
+    }
+    "target": {
+        "id": "bab755e0-7bbd-4d90-b155-352ffa283467",
+        "resourceType": "Composition"
+    },
+    "trigger": "BIRTH_REGISTERED"
+}
+```
+
+| Parameter             | Sample value                                       | Description                                                                                                                                                                                          |
+| --------------------- | -------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `id`                  | `531e9275-40e4-4ab5-a12c-6fa74d7b5b61`             | The unique `id` for this webhook. Helpful when debugging.                                                                                                                                            |
+| `address`             | `https://www.your-clever-domain-name.com/webhooks` | The URL that is notified by this webhook                                                                                                                                                             |
+| `createdAt`           | `2019-12-12T10:53:43-08:00`                        | A timestamp identifying the time that the webhook was created                                                                                                                                        |
+| `createdBy.client_id` | `8636abe2-affb-4238-8bff-200ed3652d1e`             | The unique `client_id` for the client subscriber.                                                                                                                                                    |
+| `createdBy.type`      | `system`                                           | Value is always `system` for a client subscriber.                                                                                                                                                    |
+| `createdBy.username`  | `sys.admin`                                        | The OpenCRVS `username` associated by the System Administrator responsible for creating the client subscriber in the subscription process.                                                           |
+| `createdBy.name`      | `Euan Millar`                                      | The full name of the System Administrator responsible for creating the client subscriber in the subscription process.                                                                                |
+| `target.id`           | `bab755e0-7bbd-4d90-b155-352ffa283467`             | The unique `id` for the FHIR resource target that this webhook refers to.                                                                                                                            |
+| `target.resourceType` | `Composition`                                      | The [FHIR resource](https://www.hl7.org/fhir/resource.html) type associated with the target of this webhook, e.g. `Composition` for a [FHIR Composition](https://www.hl7.org/fhir/composition.html). |
+| `trigger`             | `BIRTH_REGISTERED`                                 | A supported OpenCRVS event type string that triggered this webhook.                                                                                                                                  |
+
+By using the target.id and target.resourceType, a subsequent integration can be used to retrieve the details of the event as [FHIR resources](https://www.hl7.org/fhir/resource.html). Follow the [National ID integration mediator](./mediator) provided for an example use case.
+
+**Validating Payloads**
+
+We sign all Event Notification payloads with a **SHA1** signature and include the signature in the request's `X-Hub-Signature header`, preceded with `sha1=`. You don't have to validate the payload, but you should.
+
+To validate the payload:
+
+Generate a **SHA1** signature using the payload and your OpenCRVS `sha_secret`, available to you via the [register](./technicalInteroperability) step.
+Compare your signature to the signature in the `X-Hub-Signature header` (everything after `sha1=`). If the signatures match, the payload is genuine.
+Please note that we generate the signature using an escaped unicode version of the payload, with lowercase hex digits. If you just calculate against the decoded bytes, you will end up with a different signature. For example, the string `äöå` should be escaped to `\u00e4\u00f6\u00e5`.
+
+**Responding to Event Notifications**
+
+Your endpoint should respond to all Event Notifications with `200 OK HTTPS`.
+
+**Frequency**
+Be sure to adjust your servers to handle each Webhook individually and at any time.
+
+Unacknowledged responses will not be retried, but will be logged on the manager node.
+
+## Subscription process
+
+Firstly, ensure that you have correctly configured your subscriber endpoint above to respond to **Verification Requests**.
+
+Next, your subscription service must [request an Authorization Bearer token](./technicalInteroperability) using your `client_id` and `client_secret`.
+
+### List available webhooks
+
+This API returns webhooks that are owned by the authenticated client service
+
+**URL**
+
+```
+GET https://webhooks.<your-open-crvs-host.com>/webhooks
+```
+
+**Request headers**
+
+```
+Content-Type: application/json
+Authorization: Bearer <token>
+```
+
+**Response payload**
+
+Example json
+
+```
+{
+  "entries": [
+    {
+        "id": "531e9275-40e4-4ab5-a12c-6fa74d7b5b61",
+        "address": "https://www.your-clever-domain-name.com/webhooks",
+        "createdAt": "2019-12-12T10:53:43-08:00",
+        "createdBy": {
+            "client_id": "8636abe2-affb-4238-8bff-200ed3652d1e",
+            "type": "api",
+            "username": "sys.admin",
+            "name": "Euan Millar"
+        }
+        "trigger": "BIRTH_REGISTERED"
+    }
+  ]
+}
+```
+
+### Subscribe to a webhook
+
+This API subscribes a client service to an OpenCRVS webhook using a supported OpenCRVS event type string as a trigger.
+
+**URL**
+
+```
+POST https://webhooks.<your-open-crvs-host.com>/webhooks
+```
+
+**Request headers**
+
+```
+Content-Type: application/json
+Authorization: Bearer <token>
+```
+
+**Request payload**
+
+```
+{
+    "address": "https://www.your-clever-domain-name.com/webhooks",
+    "trigger": "BIRTH_REGISTERED"
+}
+```
+
+| Parameter | Sample value                                       | Description                                                            |
+| --------- | -------------------------------------------------- | ---------------------------------------------------------------------- |
+| `address` | `https://www.your-clever-domain-name.com/webhooks` | The URL address that will be requested when the event occurs.          |
+| `trigger` | `BIRTH_REGISTERED`                                 | A supported OpenCRVS event type string that will trigger this webhook. |
+
+The supported events and associated trigger string:
+
+| Webhook event        | trigger            |
+| -------------------- | ------------------ |
+| `Birth registration` | `BIRTH_REGISTERED` |
+| `Death registration` | `DEATH_REGISTERED` |
+| `Birth certified`    | `BIRTH_CERTIFIED`  |
+| `Death certified`    | `DEATH_CERTIFIED`  |
+| `Birth corrected`    | `BIRTH_CORRECTED`  |
+| `Death corrected`    | `DEATH_CORRECTED`  |
+
+**Response payload**
+
+Example json of created webhook object:
+
+```
+{
+    "id": "531e9275-40e4-4ab5-a12c-6fa74d7b5b61",
+    "address": "https://www.your-clever-domain-name.com/webhooks",
+    "createdAt": "2019-12-12T10:53:43-08:00",
+    "createdBy": {
+        "client_id": "8636abe2-affb-4238-8bff-200ed3652d1e",
+        "type": "api",
+        "username": "sys.admin",
+        "name": "Euan Millar"
+    }
+    "trigger": "BIRTH_REGISTERED"
+}
+```
+
+### Unsubscribe to a webhook
+
+This API unsubscribes a client service to an OpenCRVS webhook using the webhook id.
+
+**URL**
+
+```
+DELETE https://webhooks.<your-open-crvs-host.com>/webhooks/<your-webhook-id>
+```
+
+**Request headers**
+
+```
+Content-Type: application/json
+Authorization: Bearer <token>
+```
+
+**Response**
+
+Status code and an empty response will be returned when the webhook has been successfully deleted.
+
+```
+204
+```
+
+## Mediator documentation describing how to request FHIR resources
+
+OpenCRVS is working in partnership with [MOSIP - the Modular Open Source Identity Platform](https://www.mosip.io/) in order to define the following approach and standards to integrate civil registration and National ID as an example [Mediator](./mediators).
+
+OpenCRVS will publish birth events to MOSIP and subscribe to a similar webhook on the MOSIP platform to retrieve a generated National ID to assign to the newly registered individual.
