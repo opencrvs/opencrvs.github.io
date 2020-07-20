@@ -31,8 +31,25 @@ docker ps -a
 docker exec <Insert auth service container id on node> \
 wget -S --header="Authorization: Bearer <Insert your valid system administrator JWT here>" \
 --header='Accept-Charset: UTF-8' --header='Content-Type: application/json' \
+--post-data ‘{"scope":"NATIONAL_ID"}' \
 -O - http://user-mgnt:3030/registerSystemClient
 ```
+
+**Request payload**
+
+Example json
+
+```
+{
+    "scope": "NATIONAL_ID",
+}
+```
+
+| Parameter | Sample value  | Description                                                                                                       |
+| --------- | ------------- | ----------------------------------------------------------------------------------------------------------------- |
+| `scope`   | `NATIONAL_ID` | Available integration scopes currently include: **NATIONAL_ID** **HEALTH** **AGE_CHECK** **EXTERNAL_VALIDATION**. |
+
+**Request Response**
 
 The command will return the following details:
 
