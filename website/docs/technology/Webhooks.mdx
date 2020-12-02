@@ -91,6 +91,8 @@ The property `context` contains the FHIR bundles that are required for successfu
 
 Links to biometric documents that are hosted by a 3rd party vendor service such as [Simprints](https://www.simprints.com/) could be contained here as additional DocumentReferences thus connecting OpenCRVS to a functional and foundational National ID system.
 
+See the bottom of this page for an understanding of how the Simprints application could work alongside OpenCRVS and MOSIP to capture biometrics during event registration.
+
 ```
 POST / HTTPS/1.1
 Content-Type: application/json
@@ -400,3 +402,14 @@ Authorization: Bearer <token>
 **Response**
 
 **204** status code and an empty response will be returned when the webhook has been successfully deleted.
+
+### National ID biometrics
+
+The Webhook example for birth registration we have introduced here shows how OpenCRVS can integrate with the [MOSIP - the Modular Open Source Identity Platform](https://www.mosip.io/) and share the minimum requireed information necessary to generate a National ID for a child.
+
+We are also grateful to the vendor [Simprints](https://www.simprints.com/) who contributed the following proposed flow to capture biometrics during birth registration using their hardware.
+
+<img
+  alt="Simprints integration"
+  src={useBaseUrl("assets/technology/Simprints-OpenCRVS.jpg")}
+/>
