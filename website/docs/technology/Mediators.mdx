@@ -10,7 +10,7 @@ in response to a [birth registration event webhook](./webhooks) to request furth
 
 These resources can then be transformed into other formats, or seamlessly consumed if your system supports [FHIR](https://hl7.org/FHIR/).
 
-The code for this mediator represents a standardised integration of civil registraiton into National ID - specifically [MOSIP - the Modular Open Source Identity Platform](https://www.mosip.io/) and a link to the code will be available in **August 2020**.
+The [code](https://github.com/opencrvs/mosip-mediator) for this mediator represents a standardised integration of civil registraiton into National ID - specifically [MOSIP - the Modular Open Source Identity Platform](https://www.mosip.io/).
 
 The complete definition of our FHIR resources is hosted here:
 
@@ -19,7 +19,7 @@ The complete definition of our FHIR resources is hosted here:
 
 ## About mediators
 
-[OpenHIM Mediators](https://openhim.readthedocs.io/en/latest/user-guide/mediators.html) are separate micro services that run independently to the [OpenHIM](http://openhim.org/) and perform additional mediation tasks for a particular use case. The common tasks within a mediator are as follows:
+[Mediators](https://openhim.readthedocs.io/en/latest/user-guide/mediators.html) are separate micro services that run independently to OpenCRVS and perform additional mediation tasks for a particular use case. The common tasks within a mediator are as follows:
 
 - **Message format adaptation** - this is the transformation of messages received in a certain format into another format (eg. HL7 v2 to HL7 v3 or MHD to XDS.b).
 - **Message orchestration** - this is the execution of a business function that may need to call out to one or more other service endpoint on other systems. (eg. Enriching a message with a client’s unique identifier retrieved from a client registry then sending the enriched message to a shared health record).
@@ -36,23 +36,20 @@ If you are interested in developing your own mediators, see the documentation av
 **OpenCRVS FHIR Resources contain sensitive patient data.** When you are writing your mediator, it is your responsibility as an OpenCRVS implementor in your nation to ensure that you security check the accessing client.
 The following steps are essential:
 
-1. Your mediator must be hosted on the OpenCRVS stack, as it communicates to auth and OpenHIM internally through Docker Swarm.
-2. The mediator's exposed client endpoints must be protected by SSL so that data is encrypted in transit. Use the traefik.toml file to set up an outside, SSL protected endpoint.
-3. The endpoints must enforce JWT authentication
-4. The endpoints must check the validity of the JWT by verifying the token with the OpenCRVS auth service, following the example code.
-5. The endpoints must check the scope of the JWT before permitting any further requests for sensitive patient data.
-6. Once the mediator has been written, tested and peer reviewed, it must be penetration tested by an equivalent independent, [CREST](https://www.crest-approved.org/) equivalent certified penetration testing organisation before deployment.
+1. Your mediator must have secure access to the `client_id`, `client_secret` and `sha_secret` as environment varibles returned by the registration process explained [here](./technicalInteroperability).
+2. The mediator's exposed client endpoints must be protected by SSL so that data is encrypted in transit.
+3. The endpoints must enforce JWT authentication.
+4. The endpoints must check the scope of the JWT before permitting any further requests for business functions you feel are relevant to that scope.
+5. Once the mediator has been written, tested and peer reviewed, it must be penetration tested by an equivalent independent, [CREST](https://www.crest-approved.org/) equivalent certified penetration testing organisation before deployment.
 
-## Sequence diagram
-
-The following sequence diagram describes a Mediator that is developed to receive information from an OpenCRVS Webhook. But Mediators can be developed to perform any action.
-
-<img alt="mediator-sequence" src={useBaseUrl("img/mediator-sequence.png")} />
+The rest of this page describes the format of raw FHIR resources that can be retrieved from OpenCRVS. To understand how to subscribe to an OpenCRVS webhook from a mediator, begin [here](./webhooks).
 
 ## Requesting the FHIR Composition for a birth event
 
 The payload of the [birth registration event webhook](./webhooks) contains the [FHIR Composition](https://www.hl7.org/fhir/composition.html) id, that can be used to retrieve all subsequent details for the registration.
-Therefore, the FHIR Composition id is a powerful identifier and should only be accessible by approved government systems, such as those using `health` or `nationalId` JWT scopes. If you are proposing a new webhook in a feature request, consider the `resourceType` that your service requires, based on the explanation of the FHIR resources in the rest of this page. You should not need to expose the composition id in your mediator if your client service doesnt require it.
+So, subscribing to this webhook is good place to start to begin any integration. To understand how to subscribe to a webhook from a mediator, begin [here](./webhooks).
+
+The FHIR Composition id is a powerful identifier and should only be accessible by approved government systems, such as those using `health` or `nationalId` JWT scopes. If you are proposing a new webhook in a feature request, consider the `resourceType` that your service requires, based on the explanation of the FHIR resources in the rest of this page. You should not need to expose the composition id in your mediator if your client service doesnt require it.
 
 | Parameter             | Sample value                           | Description                                                                                                                                                                                               |
 | --------------------- | -------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

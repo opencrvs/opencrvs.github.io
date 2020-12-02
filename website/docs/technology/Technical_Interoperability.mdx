@@ -5,19 +5,23 @@ title: Technical interoperability
 
 By using [FHIR](https://hl7.org/FHIR/) as a standard for our NoSQL datastore [Hearth](https://github.com/jembi/hearth) and interoperability layer [OpenHIM](http://openhim.org/), OpenCRVS seamlessly connects civil registration to health services and other systems. We can receive birth and death notifications from the hospital setting and expose registration events to any other technical system, such as National ID, via our FHIR standard API gateways in OpenHIM.
 
-To interact with the OpenHIM Gateway as an external system, your system administrator is required to:
+To integrate with OpenCRVS, the recommended approach is to host a microservice on your platform that can interact with OpenHIM. This microservice is referred to as a [mediator](./mediators).
 
-1. SSH into the OpenCRVS manager node and register a new system client
-2. Securely host the system `client_id`, `client_secret` and `sha_secret`, returned in the registration process, as environment variables or Docker Secrets that your mediator or webhook subscriber service has secure access to.
+A mediator, with the right scope and permissions can interact with existing endpoints in the OpenCRVS stack. But the most logical integration point is to subscribe to OpenCRVS [Webhooks](./webhooks).
 
-You are then required to:
+To set up a mediator with the right permissions there is no GUI, your system administrator is required to:
+
+1. SSH into the OpenCRVS manager node and register a new system client. Described below.
+2. Securely host the system `client_id`, `client_secret` and `sha_secret`, returned in the registration process, as environment variables or secrets that your mediator or webhook subscriber service has secure access to.
+
+Your mediator microservice is then required to:
 
 3. Authenticate and request an access token. Described below.
 4. Develop a [mediator](./mediators) or [webhook subscriber](./webhooks) to perform your required business functions. We expose some OpenCRVS events as Webhooks which can be a good way to interact immediately if the supported events are of interest to you.
 
 ### Register a system client
 
-**In the upcoming OpenCRVS Beta release the following process will be deprecated and replaced by a form in the System Administrator User Team Management functionality.**
+**In the upcoming OpenCRVS Beta release the following process will be deprecated and replaced by a GUI in the System Administrator User Team Management functionality.**
 
 Using a valid system administrator JWT token returned during OpenCRVS client authentication, SSH into your manager instance and run the following commands to register a new client.
 
@@ -185,19 +189,9 @@ You can read more about the functional interoperability requirements [here](../s
 
 You can read more regarding record verification [here](../core_functions/recordVerification)
 
-**Coming August 2020**
+**MOSIP Example**
 
-OpenCRVS will be publishing documentation on this site of an integration showcasing standards-based interoperability between the civil registration function of OpenCRVS and identity management systems (both functional and foundational).
+A technical proof of concept [mediator](./mediators) that exposes civil registration events via a [Webhook](./webhooks) to the [MOSIP - the Modular Open Source Identity Platform](https://www.mosip.io/) is documented on the mediator and webhooks page, along with links to the code.
 
-This will include:
-
-- A technical proof of concept [OpenHIM Mediator](./mediators) that exposes civil registration events via a [Webhook](./webhooks).
-- A FHIR standardised integration of the Birth Registration event via this Webhook into [MOSIP - the Modular Open Source Identity Platform](https://www.mosip.io/).
-- Documentation regarding the inclusion of biometrics to the Birth Registration payload using [Simprints - last mile biometric identification for universal health coverage](https://www.simprints.com/) standardised in a [FHIR Observation](https://www.hl7.org/fhir/observation.html).
-
-This interoperability is very important to ensure that the legal identity established at birth is then utilised as a foundational identity to access other services (e.g. health, education, financial inclusion, passport, mobile phone etc.) and to ensure that we leave no one behind.
-
-You can view work-in-progress documentation of our approach here:
-
-- [Webhooks](./webhooks)
-- [Mediators and FHIR](./mediators)
+This integration represents A FHIR standardised approach to ensuring that a birth registration directly creates a National ID number with optional biometrics.
+This interoperability ensures that the legal identity established at birth is then utilised as a foundational identity to access other services (e.g. health, education, financial inclusion, passport, mobile phone etc.) and to ensure that we leave no one behind.

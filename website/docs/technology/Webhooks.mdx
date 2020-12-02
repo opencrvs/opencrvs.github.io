@@ -7,7 +7,7 @@ import useBaseUrl from "@docusaurus/useBaseUrl";
 
 ## Introduction
 
-In order to make OpenCRVS as useful and open as possible to other systems, OpenCRVS publishes the following civil registration events as Webhooks that systems can subscribe to.
+In order to make OpenCRVS as useful and open as possible to other systems, OpenCRVS publishes the following civil registration events as Webhooks that [mediators](./mediators) can subscribe to.
 
 - **Birth registration**
 - **Death registration**
@@ -16,59 +16,80 @@ In order to make OpenCRVS as useful and open as possible to other systems, OpenC
 - **Birth corrected**
 - **Death corrected**
 
-Included in the webhook will be a **FHIR Resource type and uniqe ID** to the resource associated. Once a subscriber receives the event, they can query OpenCRVS for **demographics, attachments and links to biometric data** for the registration in a dedicated and secure API.
+Included in these webhooks is be a **FHIR Resource type and uniqe ID** to the resource associated. In these cases, a **FHIR Composition id**. Once a subscriber receives the event, they can query OpenCRVS for **demographics, attachments and links to biometric data** for the registration in a dedicated and secure API.
 
 Subscribing to an OpenCRVS Webhook requires your system administrator to:
 
 1. SSH into the OpenCRVS manager node and [register a new system client](./technicalInteroperability)
-2. Securely host the system `client_id`, `client_secret` and `sha_secret`, returned in the registration process, as environment variables or Docker Secrets that your subscriber service has secure access to.
+2. Securely host the system `client_id`, `client_secret` and `sha_secret`, returned in the registration process, as environment variables your mediator has access to.
 
-Subscribing to an OpenCRVS Webhook requires your subscribing system client to:
+Subscribing to an OpenCRVS Webhook requires you to develop a mediator. As an example, we have written **[this mediator](https://github.com/opencrvs/mosip-mediator)** that subscribes to a **birth registration** event and retrieves the data required by the [MOSIP - the Modular Open Source Identity Platform](https://www.mosip.io/) to register a national ID.:
 
-1. Create an endpoint on a secure server that can process HTTPS requests.
+A mediator that subscribes to an OpenCRVS webhook must:
+
+1. Expose endpoints on a secure server that can process HTTPS requests and respond to a Webhook following the [WebSub](https://www.w3.org/TR/websub/) pattern.
 2. Authenticate and query OpenCRVS to find a list of available event webhooks.
-3. Authenticate and subscribe to the Webhook of choice and configure your endpoints.
-4. Develop a mediator to respond to the Webhook to request sensitive demographic or biometric details required for your system. Refer to the MOSIP [mediator](./mediators).
+3. Authenticate and subscribe to the Webhook of choice.
+4. Respond to the Webhook event as you wish internally, and request further details from OpenHIM to suit your business case. Refer to the [mediator](./mediators) page for examples of raw FHIR resources.
 
 These steps are explained in detail below.
 
+## Sequence diagram
+
+The following sequence diagram describes a Mediator that is developed to receive information from an OpenCRVS Webhook.
+
+<img alt="mediator-sequence" src={useBaseUrl("img/mediator-sequence.png")} />
+
 ## Creating a subscriber endpoint
 
-Your endpoint must be able to process two types of HTTPS requests: **Verification Requests** and **Event Notifications**. Since both requests use HTTPs, your server must have a valid TLS or SSL certificate correctly configured and installed.
+Your microservice mediator must be able to process two types of HTTPS requests: **Verification Requests** and **Event Notifications**. Since both requests use HTTPs, your server must have a valid TLS or SSL certificate correctly configured and installed.
 
-The sections below explain what will be in each type of request and how to respond to them.
+The following sections explain what will be in each type of request to these endpoints and how to respond to them.
 
 ### Verification Requests
 
-Anytime you subscribe to a Webhook, OpenCRVS will send a GET request to your endpoint URL. Verification requests include the following query string parameters, appended to the end of your endpoint URL. They will look something like this:
+Anytime you try to subscribe to a Webhook, OpenCRVS will send a GET request to this endpoint URL to confirm that your microservice is prepared to receive webhooks.
 
 **Sample Verification Request**
 
 ```
 GET https://www.your-clever-domain-name.com/webhooks?
-  opencrvs.mode=subscribe&
-  opencrvs.challenge=1158201444&
-  opencrvs.verifyToken=abcdefghijklmnopqrstuvwxyz
+  mode=subscribe&
+  challenge=&
+  topic=BIRTH_REGISTERED
 ```
 
-| Parameter              | Sample value                 | Description                                                           |
-| ---------------------- | ---------------------------- | --------------------------------------------------------------------- |
-| `opencrvs.mode`        | `subscribe`                  | This value will always be set to `subscribe`                          |
-| `opencrvs.challenge`   | `1158201444`                 | An `int` you must pass back to OpenCRVS                               |
-| `opencrvs.verifyToken` | `abcdefghijklmnopqrstuvwxyz` | You will set this `string` when you complete the subscription process |
+| Parameter   | Sample value       | Description                                                           |
+| ----------- | ------------------ | --------------------------------------------------------------------- |
+| `mode`      | `subscribe`        | This value will always be set to `subscribe`                          |
+| `challenge` | `1158201444`       | A random cryptographic string that you must pass back to OpenCRVS     |
+| `topic`     | `BIRTH_REGISTERED` | A supported OpenCRVS event type string that will trigger this webhook |
+
+Note: The supported events and associated topic strings are explained later in this document when studying the subscription process
 
 **Validating Verification Requests**
 
 Whenever your endpoint receives a verification request, it must:
 
-Verify that the `opencrvs.verifyToken` value matches the string you set in the verifyToken field when you configure the Webhooks.
-Respond with the `opencrvs.challenge` value.
+Verify that the `topic` value matches the event you're trying to subscribe to.
+Respond with the following object:
+
+```
+{
+    "challenge": "1158201444"
+}
+
+```
 
 ### Event Notifications
 
 When you configure your Webhooks product, you will subscribe to specific events. Whenever there's a a new event created, we will send your endpoint a POST request with a JSON payload describing the event **FHIR Compostion ID**.
 
-For example, if you subscribed to the birth registration event, we would send you a POST request that would look something like this:
+For example, if you subscribed to the birth registration event, we would send you a POST request to the same URL as the **Verification request** URL that would look something like this:
+
+The property `context` contains the FHIR bundles that are required for successfully processing an action. In our current birth registration webhook we have included all the required information that the [MOSIP - the Modular Open Source Identity Platform](https://www.mosip.io/) requires in order to create a National ID number as an example.
+
+Links to biometric documents that are hosted by a 3rd party vendor service such as [Simprints](https://www.simprints.com/) could be contained here as additional DocumentReferences thus connecting OpenCRVS to a functional and foundational National ID system.
 
 ```
 POST / HTTPS/1.1
@@ -76,46 +97,173 @@ Content-Type: application/json
 X-Hub-Signature: sha1={super-long-SHA1-signature}
 
 {
-    "id": "531e9275-40e4-4ab5-a12c-6fa74d7b5b61",
-    "address": "https://www.your-clever-domain-name.com/webhooks",
-    "createdAt": "2019-12-12T10:53:43-08:00",
-    "createdBy": {
-        "client_id": "8636abe2-affb-4238-8bff-200ed3652d1e",
-        "type": "api",
-        "username": "sys.admin",
-        "name": "Euan Millar"
+    "payload": {
+        "id": "531e9275-40e4-4ab5-a12c-6fa74d7b5b61",
+        "timestamp": "2019-12-12T10:53:43-08:00",
+        "event": {
+            "hub": {
+                "topic": "BIRTH_REGISTERED"
+            }
+        }
     }
-    "target": {
-        "id": "bab755e0-7bbd-4d90-b155-352ffa283467",
-        "resourceType": "Composition"
-    },
-    "trigger": "BIRTH_REGISTERED"
+    "url": "",
+    "hmac": "sha256=1d51fb6d-8636abe2-affb-4238-8bff-200ed3652d1et-dhrhd55",
+    context: [{
+        "resourceType": "Bundle",
+        "entry": [
+            {
+            "resource": {
+                "resourceType": "Task",
+                "status": "requested",
+                "code": {
+                "coding": [
+                    { "system": "http://opencrvs.org/specs/types", "code": "BIRTH" }
+                ]
+                },
+                "focus": {
+                "reference": "Composition/e9e2ff8d-1eac-412b-8bbc-408e90276a3f"
+                },
+                "identifier": [
+                {
+                    "system": "http://opencrvs.org/specs/id/draft-id",
+                    "value": "53fe6974-6140-4e50-afc7-998a9018709b"
+                },
+                {
+                    "system": "http://opencrvs.org/specs/id/birth-tracking-id",
+                    "value": "B6E6YJB"
+                },
+                {
+                    "system": "http://opencrvs.org/specs/id/birth-registration-number",
+                    "value": "2020B6E6YJB"
+                }
+                ],
+                "extension": [
+                {
+                    "url": "http://opencrvs.org/specs/extension/contact-person",
+                    "valueString": "MOTHER"
+                },
+                {
+                    "url": "http://opencrvs.org/specs/extension/contact-relationship",
+                    "valueString": ""
+                },
+                {
+                    "url": "http://opencrvs.org/specs/extension/contact-person-phone-number",
+                    "valueString": "+260965656563"
+                },
+                {
+                    "url": "http://opencrvs.org/specs/extension/timeLoggedMS",
+                    "valueInteger": 52942
+                },
+                {
+                    "url": "http://opencrvs.org/specs/extension/regLastUser",
+                    "valueReference": {
+                    "reference": "Practitioner/c3355b48-7790-43c7-b8f0-10c7316f9bed"
+                    }
+                },
+                {
+                    "url": "http://opencrvs.org/specs/extension/regLastLocation",
+                    "valueReference": {
+                    "reference": "Location/1b4092e0-d391-45cd-89d4-162a81f0f63f"
+                    }
+                },
+                {
+                    "url": "http://opencrvs.org/specs/extension/regLastOffice",
+                    "valueReference": {
+                    "reference": "Location/4ec9c980-0b2f-436a-b49e-203e1e601620"
+                    }
+                }
+                ],
+                "lastModified": "2020-09-27T09:15:20.015Z",
+                "businessStatus": {
+                "coding": [
+                    {
+                    "system": "http://opencrvs.org/specs/reg-status",
+                    "code": "REGISTERED"
+                    }
+                ]
+                },
+                "meta": {
+                "lastUpdated": "2020-09-27T09:15:20.040+00:00",
+                "versionId": "cfbefeac-bda0-4339-9745-9d54e7816c7d"
+                },
+                "id": "60ec435c-1370-4314-ab0b-f44507f0db24"
+            }
+            },
+            {
+            "resource": {
+                "resourceType": "Patient",
+                "active": true,
+                "name": [{ "use": "en", "given": ["esrgstg"], "family": ["srthsrt"] }],
+                "gender": "male",
+                "birthDate": "2019-12-23",
+                "multipleBirthInteger": 1,
+                "meta": {
+                "lastUpdated": "2020-09-27T09:15:20.166+00:00",
+                "versionId": "9f5f1a5e-7059-4f5b-bf2f-8aa4f641b37c"
+                },
+                "id": "1e9ca16b-7c9a-469d-8101-ddd0db229077",
+                "identifier": [
+                { "type": "BIRTH_REGISTRATION_NUMBER", "value": "2020B6E6YJB" }
+                ]
+            }
+            },
+            {
+            "resource": {
+                "resourceType": "DocumentReference",
+                "masterIdentifier": {
+                "system": "urn:ietf:rfc:3986",
+                "value": "d3240515-3d90-4f1a-bbb6-6530477565bd"
+                },
+                "status": "current",
+                "content": [
+                {
+                    "attachment": {
+                    "contentType": "image/png",
+                    "data": "data:image/png;base64,iVBORw0KJLX..."
+                    }
+                }
+                ],
+                "type": {
+                "coding": [
+                    {
+                    "system": "http://opencrvs.org/specs/supporting-doc-type",
+                    "code": "NATIONAL_ID_FRONT"
+                    }
+                ]
+                },
+                "subject": { "display": "MOTHER" },
+                "meta": {
+                "lastUpdated": "2020-09-27T09:15:20.042+00:00",
+                "versionId": "0307d10f-f2c1-42be-a0d3-b09c268a38cf"
+                },
+                "id": "bf503f30-1d0a-40dc-908f-9c0d5e9cdf23"
+            }
+            }
+        ]
+        }]
 }
 ```
 
-| Parameter             | Sample value                                       | Description                                                                                                                                                                                          |
-| --------------------- | -------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `id`                  | `531e9275-40e4-4ab5-a12c-6fa74d7b5b61`             | The unique `id` for this webhook. Helpful when debugging.                                                                                                                                            |
-| `address`             | `https://www.your-clever-domain-name.com/webhooks` | The URL that is notified by this webhook                                                                                                                                                             |
-| `createdAt`           | `2019-12-12T10:53:43-08:00`                        | A timestamp identifying the time that the webhook was created                                                                                                                                        |
-| `createdBy.client_id` | `8636abe2-affb-4238-8bff-200ed3652d1e`             | The unique `client_id` for the client subscriber.                                                                                                                                                    |
-| `createdBy.type`      | `system`                                           | Value is always `system` for a client subscriber.                                                                                                                                                    |
-| `createdBy.username`  | `sys.admin`                                        | The OpenCRVS `username` associated by the System Administrator responsible for creating the client subscriber in the subscription process.                                                           |
-| `createdBy.name`      | `Euan Millar`                                      | The full name of the System Administrator responsible for creating the client subscriber in the subscription process.                                                                                |
-| `target.id`           | `bab755e0-7bbd-4d90-b155-352ffa283467`             | The unique `id` for the FHIR resource target that this webhook refers to.                                                                                                                            |
-| `target.resourceType` | `Composition`                                      | The [FHIR resource](https://www.hl7.org/fhir/resource.html) type associated with the target of this webhook, e.g. `Composition` for a [FHIR Composition](https://www.hl7.org/fhir/composition.html). |
-| `trigger`             | `BIRTH_REGISTERED`                                 | A supported OpenCRVS event type string that triggered this webhook.                                                                                                                                  |
-
-By using the target.id and target.resourceType, a subsequent integration can be used to retrieve the details of the event as [FHIR resources](https://www.hl7.org/fhir/resource.html). Follow the [National ID integration mediator](./mediators) provided for an example use case.
+| Parameter                 | Sample value                                                      | Description                                                                                                     |
+| ------------------------- | ----------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| `payload.id`              | `531e9275-40e4-4ab5-a12c-6fa74d7b5b61`                            | The unique `id` for this webhook. Helpful when debugging.                                                       |
+| `payload.timestamp`       | `2019-12-12T10:53:43-08:00`                                       | A timestamp identifying the time that the webhook was created                                                   |
+| `payload.event.hub.topic` | `BIRTH_REGISTERED`                                                | A supported OpenCRVS event type string that triggered this webhook.                                             |
+| `url`                     | `https://www.your-clever-domain-name.com/webhooks`                | The URL that is notified by this webhook                                                                        |
+| `hmac`                    | `sha256=d14a028c2a3a2bc9476102bb288234c415a2b01f828ea62ac5b3e42f` | The request signature that is created using your `sha_secret` explained below.                                  |
+| `context`                 | `[{ ... }]`                                                       | The [FHIR resources](https://www.hl7.org/fhir/resource.html) bundle associated with the target of this webhook. |
 
 **Validating Payloads**
 
-We sign all Event Notification payloads with a **SHA1** signature and include the signature in the request's `X-Hub-Signature header`, preceded with `sha1=`. You don't have to validate the payload, but you should.
+We sign all Event Notification payloads with an HMAC **SHA256** hash and include the hash in the request's `hmac` property, preceded with `sha256=`. You should validate this against your `sha_secret` environment variable.
 
-To validate the payload:
+This [method](https://github.com/opencrvs/opencrvs-core/blob/c20e50af197be8e4423746a3bb1d4eb6cbe64353/packages/webhooks/src/features/event/service.ts#L19) shows how we create the signature to help you understand how you might create a similar hash and compare. You can confirm that this data is genuine.
 
-Generate a **SHA1** signature using the payload and your OpenCRVS `sha_secret`, available to you via the [register](./technicalInteroperability) step.
-Compare your signature to the signature in the `X-Hub-Signature header` (everything after `sha1=`). If the signatures match, the payload is genuine.
+To validate the payload in a similar way to our method:
+
+Generate a **SHA256** signature using the `context` array contents at position [0] as the `rawBody` . `signingSecret` is your OpenCRVS `sha_secret`, available to you as an environment variable and generated via the [register](./technicalInteroperability) step. `requestSigningVersion` is `"sha256"`
+Compare your signature to the `hmac` prop. If the signatures match, the payload is genuine.
+
 Please note that we generate the signature using an escaped unicode version of the payload, with lowercase hex digits. If you just calculate against the decoded bytes, you will end up with a different signature. For example, the string `äöå` should be escaped to `\u00e4\u00f6\u00e5`.
 
 **Responding to Event Notifications**
@@ -125,11 +273,11 @@ Your endpoint should respond to all Event Notifications with `200 OK HTTPS`.
 **Frequency**
 Be sure to adjust your servers to handle each Webhook individually and at any time.
 
-Unacknowledged responses will not be retried, but will be logged on the manager node.
+Unacknowledged responses are retried according to the capabilities of our library used [bullmq](https://docs.bullmq.io/what-is-bullmq).
 
 ## Subscription process
 
-Firstly, ensure that you have correctly configured your subscriber endpoint above to respond to **Verification Requests**.
+Firstly, ensure that you have correctly configured your subscriber endpoint above to respond to **Verification Requests** and **Event Notifications**.
 
 Next, your subscription service must [request an Authorization Bearer token](./technicalInteroperability) using your `client_id` and `client_secret`.
 
@@ -159,7 +307,7 @@ Example json
   "entries": [
     {
         "id": "531e9275-40e4-4ab5-a12c-6fa74d7b5b61",
-        "address": "https://www.your-clever-domain-name.com/webhooks",
+        "callback": "https://www.your-clever-domain-name.com/webhooks",
         "createdAt": "2019-12-12T10:53:43-08:00",
         "createdBy": {
             "client_id": "8636abe2-affb-4238-8bff-200ed3652d1e",
@@ -167,7 +315,7 @@ Example json
             "username": "sys.admin",
             "name": "Euan Millar"
         }
-        "trigger": "BIRTH_REGISTERED"
+        "topic": "BIRTH_REGISTERED"
     }
   ]
 }
@@ -194,17 +342,28 @@ Authorization: Bearer <token>
 
 ```
 {
-    "address": "https://www.your-clever-domain-name.com/webhooks",
-    "trigger": "BIRTH_REGISTERED"
+    "hub": {
+        "callback": "https://www.your-clever-domain-name.com/webhooks",
+        "mode": "subscribe",
+        "topic": "BIRTH_REGISTERED",
+        "secret": "d04aec67-1ef4-467a-a5a8-fa5c89ad71ce"
+    }
+
 }
+
+
 ```
 
-| Parameter | Sample value                                       | Description                                                            |
-| --------- | -------------------------------------------------- | ---------------------------------------------------------------------- |
-| `address` | `https://www.your-clever-domain-name.com/webhooks` | The URL address that will be requested when the event occurs.          |
-| `trigger` | `BIRTH_REGISTERED`                                 | A supported OpenCRVS event type string that will trigger this webhook. |
+Parameters contained within the `hub` object:
 
-The supported events and associated trigger string:
+| Parameter  | Sample value                                       | Description                                                                                                 |
+| ---------- | -------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| `callback` | `https://www.your-clever-domain-name.com/webhooks` | The URL address that will be requested when the event occurs.                                               |
+| `mode`     | `subscribe`                                        | Always set to `subscribe` for this action.                                                                  |
+| `topic`    | `BIRTH_REGISTERED`                                 | A supported OpenCRVS event type string that will trigger this webhook.                                      |
+| `secret`   | `d04aec67-1ef4-467a-a5a8-fa5c89ad71ce`             | Your OpenCRVS `sha_secret`, available to you via the mediator [register](./technicalInteroperability) step. |
+
+The supported events and associated topic string:
 
 | Webhook event        | trigger            |
 | -------------------- | ------------------ |
@@ -217,22 +376,9 @@ The supported events and associated trigger string:
 
 **Response payload**
 
-Example json of created webhook object:
+The subscribe process will test the authenticity of the `sha_secret` and additionally make a test GET request to the **Verification Request**
 
-```
-{
-    "id": "531e9275-40e4-4ab5-a12c-6fa74d7b5b61",
-    "address": "https://www.your-clever-domain-name.com/webhooks",
-    "createdAt": "2019-12-12T10:53:43-08:00",
-    "createdBy": {
-        "client_id": "8636abe2-affb-4238-8bff-200ed3652d1e",
-        "type": "api",
-        "username": "sys.admin",
-        "name": "Euan Millar"
-    }
-    "trigger": "BIRTH_REGISTERED"
-}
-```
+Provided all is successfully completeed, your webhook will be subscribed and you will receive a **202** status code and empty response.
 
 ### Unsubscribe to a webhook
 
@@ -253,14 +399,4 @@ Authorization: Bearer <token>
 
 **Response**
 
-Status code and an empty response will be returned when the webhook has been successfully deleted.
-
-```
-204
-```
-
-## Mediator documentation describing how to request FHIR resources
-
-OpenCRVS is working in partnership with [MOSIP - the Modular Open Source Identity Platform](https://www.mosip.io/) in order to define the following approach and standards to integrate civil registration and National ID as an example [Mediator](./mediators).
-
-OpenCRVS will publish birth events to MOSIP and subscribe to a similar webhook on the MOSIP platform to retrieve a generated National ID to assign to the newly registered individual.
+**204** status code and an empty response will be returned when the webhook has been successfully deleted.
