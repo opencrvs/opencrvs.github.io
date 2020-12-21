@@ -7,10 +7,10 @@
     "postinstall": "patch-package"
   },
   "devDependencies": {
-    "@docusaurus/core": "^2.0.0-alpha.55",
-    "@docusaurus/theme-live-codeblock": "^2.0.0-alpha.55",
-    "@docusaurus/plugin-ideal-image": "^2.0.0-alpha.55",
-    "@docusaurus/preset-classic": "^2.0.0-alpha.55",
+    "@docusaurus/core": "^2.0.0-alpha.70",
+    "@docusaurus/theme-live-codeblock": "^2.0.0-alpha.70",
+    "@docusaurus/plugin-ideal-image": "^2.0.0-alpha.70",
+    "@docusaurus/preset-classic": "^2.0.0-alpha.70",
     "classnames": "^2.2.6",
     "color": "^3.1.2",
     "npm-to-yarn": "^1.0.0-2",

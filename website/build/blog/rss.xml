@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+    <channel>
+        <title>OpenCRVS is a digital public good to help achieve universal civil registration and evidence-based decision making in all country contexts Blog</title>
+        <link>https://opencrvs.github.io/blog</link>
+        <description>OpenCRVS is a digital public good to help achieve universal civil registration and evidence-based decision making in all country contexts Blog</description>
+        <lastBuildDate>Tue, 24 Oct 2017 00:00:00 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>https://github.com/jpmonette/feed</generator>
+        <item>
+            <title><![CDATA[New Version 1.0.0]]></title>
+            <link>https://opencrvs.github.io/opencrvs-core/blog/2017/10/24/new-version-1.0.0</link>
+            <guid>New Version 1.0.0</guid>
+            <pubDate>Tue, 24 Oct 2017 00:00:00 GMT</pubDate>
+            <description><![CDATA[This blog post will test file name parsing issues when periods are present.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Adding RSS Support]]></title>
+            <link>https://opencrvs.github.io/opencrvs-core/blog/2017/09/26/adding-rss</link>
+            <guid>Adding RSS Support</guid>
+            <pubDate>Tue, 26 Sep 2017 00:00:00 GMT</pubDate>
+            <description><![CDATA[This is a test post.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Adding RSS Support - RSS Truncation Test]]></title>
+            <link>https://opencrvs.github.io/opencrvs-core/blog/2017/09/25/testing-rss</link>
+            <guid>Adding RSS Support - RSS Truncation Test</guid>
+            <pubDate>Mon, 25 Sep 2017 00:00:00 GMT</pubDate>
+            <description><![CDATA[1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890]]></description>
+        </item>
+        <item>
+            <title><![CDATA[New Blog Post]]></title>
+            <link>https://opencrvs.github.io/opencrvs-core/blog/2017/04/10/blog-post-two</link>
+            <guid>New Blog Post</guid>
+            <pubDate>Mon, 10 Apr 2017 00:00:00 GMT</pubDate>
+            <description><![CDATA[Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus elementum massa eget nulla aliquet sagittis. Proin odio tortor, vulputate ut odio in, ultrices ultricies augue. Cras ornare ultrices lorem malesuada iaculis. Etiam sit amet libero tempor, pulvinar mauris sed, sollicitudin sapien.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Blog Title]]></title>
+            <link>https://opencrvs.github.io/opencrvs-core/blog/2016/03/11/blog-post</link>
+            <guid>Blog Title</guid>
+            <pubDate>Fri, 11 Mar 2016 00:00:00 GMT</pubDate>
+            <description><![CDATA[Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus elementum massa eget nulla aliquet sagittis. Proin odio tortor, vulputate ut odio in, ultrices ultricies augue. Cras ornare ultrices lorem malesuada iaculis. Etiam sit amet libero tempor, pulvinar mauris sed, sollicitudin sapien.]]></description>
+        </item>
+    </channel>
+</rss>

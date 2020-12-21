@@ -17,8 +17,14 @@ const siteConfig = {
   favicon: "img/favicon.ico",
 
   themeConfig: {
-    disableDarkMode: true,
-    defaultDarkMode: false,
+    colorMode: {
+      // "light" | "dark"
+      defaultMode: 'light',
+
+      // Hides the switch in the navbar
+      // Useful if you want to support a single color mode
+      disableSwitch: false,
+    },
     footer: {
       logo: {
         alt: "OpenCRVS Logo",
@@ -33,7 +39,7 @@ const siteConfig = {
         alt: "OpenCRVS Logo",
         src: "img/logo.svg",
       },
-      links: [
+      items: [
         {
           to: "docs/system_overview/introduction",
           label: "Docs",
