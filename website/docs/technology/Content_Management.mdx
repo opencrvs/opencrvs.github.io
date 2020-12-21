@@ -1,0 +1,39 @@
+---
+id: contentManagement
+title: Content Management
+---
+
+import useBaseUrl from "@docusaurus/useBaseUrl";
+
+You can configure an external content management system such as [Contentful](https://www.contentful.com/).
+
+We have provided some handy import scripts and configuration values to help you import your languages, preview,
+publish and easily manage all application text, including form fields, labels, validation error messages and SMS messages in multi-language.
+
+Over 1000 different content keys can be content managed.
+
+<img
+  alt="Reason_for_correction"
+  src={useBaseUrl("assets/technology/content-management.png")}
+/>
+
+We currently do not recommend one CMS over another and for now the, process of updating your CMS is outside current OpenCRVS scope.
+So if you plan on using a CMS, you will need to keep an eye on OpenCRVS releases and perform the necessary migrations when new content keys are added for new features.
+
+An automated commit script in core highlights new keys that need to be imported into your country resources package.
+
+## Configuration
+
+Contentful is a paid-for service but 1 space and 2 locales are free. At the time of writing we couldnt find a better free option for multi-language content management.
+
+When a new commit is pushed to core, you can pass the environment variables **RESOURCES_PATH** and **COUNTRY_CODE** and the commit will automatically export content keys in [this](https://github.com/opencrvs/opencrvs-zambia/blob/master/src/zmb/features/languages/generated) folder.
+
+To perform an initial import to Contentful:
+
+1. First create a space in Contentful and add up to 2 locales for the free plan. Copy your **space-id** from Contentful settings.
+2. Download and install the [Contentful cli](https://github.com/contentful/contentful-cli)
+3. Run the following command to export your space as you will need ids for your locales: `contentful space export --space-id=<your-space-id>`
+4. Open the exported file and copy the required ids to this [file](https://github.com/opencrvs/opencrvs-zambia/blob/master/src/zmb/features/languages/scripts/constants.ts)
+5. You can run the following command to generate a **contentful-import.json** file: `yarn contentful:prepare:import`
+6. Run the Contentful import script: `contentful space import --content-file src/zmb/features/languages/generated/contentful-import.json --space-id=<your-space-id>`
+7. Get your API key from contentful settings and add it to docker secrets, or paste [here](https://github.com/opencrvs/opencrvs-zambia/blob/master/src/zmb/constants.ts) for use in development. DO NOT SUBMIT API KEYS TO A PUBLIC REPO!
